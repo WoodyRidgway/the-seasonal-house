@@ -13,650 +13,114 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --green:       #3A5A40;
-      --green-dark:  #2C4430;
-      --green-light: #5C7E63;
-      --tan:         #C8B89A;
-      --tan-light:   #E8DDD0;
-      --cream:       #F7F2EA;
-      --cream-dark:  #EDE5D8;
-      --bark:        #6B4F3A;
-      --soil:        #2C1F14;
-      --sky:         #8BA89A;
-      --text:        #2C2416;
-      --text-mid:    #5A4E42;
-      --text-light:  #8C7E70;
+      --green: #3A5A40; --green-dark: #2C4430; --green-light: #5C7E63;
+      --tan: #C8B89A; --tan-light: #E8DDD0; --cream: #F7F2EA; --cream-dark: #EDE5D8;
+      --bark: #6B4F3A; --soil: #2C1F14; --sky: #8BA89A;
+      --text: #2C2416; --text-mid: #5A4E42; --text-light: #8C7E70;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── GRAIN OVERLAY ── */
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.4;
+      pointer-events: none; z-index: 1000; opacity: 0.4;
     }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      position: relative;
-      overflow: hidden;
-      background: var(--green-dark);
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 120%, #5C7E6322 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 20%, #C8B89A11 0%, transparent 60%),
-        linear-gradient(160deg, #2C4430 0%, #1E3028 40%, #162318 100%);
-    }
-
-    /* Decorative botanical rings */
-    .hero-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(200,184,154,0.08);
-      pointer-events: none;
-    }
+    .hero { min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; position: relative; overflow: hidden; background: var(--green-dark); }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 120%, #5C7E6322 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 20%, #C8B89A11 0%, transparent 60%), linear-gradient(160deg, #2C4430 0%, #1E3028 40%, #162318 100%); }
+    .hero-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(200,184,154,0.08); pointer-events: none; }
     .hero-ring-1 { width: 600px; height: 600px; top: -100px; right: -150px; }
     .hero-ring-2 { width: 900px; height: 900px; top: -250px; right: -300px; border-color: rgba(200,184,154,0.04); }
     .hero-ring-3 { width: 400px; height: 400px; bottom: -100px; left: -100px; border-color: rgba(200,184,154,0.06); }
-
-    /* Decorative leaf marks */
-    .leaf-mark {
-      position: absolute;
-      font-size: 120px;
-      opacity: 0.04;
-      pointer-events: none;
-      line-height: 1;
-    }
+    .leaf-mark { position: absolute; font-size: 120px; opacity: 0.04; pointer-events: none; line-height: 1; }
     .leaf-mark-1 { top: 60px; left: 40px; transform: rotate(-20deg); }
     .leaf-mark-2 { bottom: 80px; right: 60px; transform: rotate(15deg); font-size: 80px; }
-
-    /* ── NAV ── */
-    nav {
-      position: relative;
-      z-index: 10;
-      padding: 28px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--tan-light);
-      letter-spacing: 0.02em;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.1s forwards;
-    }
-
-    .nav-tagline {
-      font-size: 12px;
-      color: rgba(200,184,154,0.5);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s forwards;
-    }
-
-    /* ── HERO CONTENT ── */
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 24px;
-    }
-
-    .season-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(200,184,154,0.1);
-      border: 1px solid rgba(200,184,154,0.2);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 12px;
-      color: var(--tan);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.3s forwards;
-    }
-
-    .season-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--tan);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 8vw, 96px);
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.4s forwards;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--tan);
-    }
-
-    .hero-subtitle {
-      font-family: 'Lora', serif;
-      font-size: clamp(16px, 2.5vw, 22px);
-      color: rgba(231,219,205,0.7);
-      margin-bottom: 56px;
-      font-style: italic;
-      letter-spacing: 0.01em;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.5s forwards;
-    }
-
-    /* ── WAITLIST FORM ── */
-    .waitlist-wrap {
-      width: 100%;
-      max-width: 480px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.6s forwards;
-    }
-
-    .waitlist-form {
-      display: flex;
-      gap: 0;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(200,184,154,0.25);
-      border-radius: 12px;
-      padding: 6px;
-      backdrop-filter: blur(10px);
-    }
-
-    .waitlist-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 14px 18px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      color: var(--cream);
-      min-width: 0;
-    }
-
-    .waitlist-input::placeholder {
-      color: rgba(200,184,154,0.45);
-    }
-
-    .waitlist-btn {
-      background: var(--tan);
-      color: var(--soil);
-      border: none;
-      border-radius: 8px;
-      padding: 14px 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s ease, transform 0.15s ease;
-      letter-spacing: 0.02em;
-    }
-
-    .waitlist-btn:hover {
-      background: var(--tan-light);
-      transform: translateY(-1px);
-    }
-
+    nav { position: relative; z-index: 10; padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--tan-light); letter-spacing: 0.02em; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
+    .nav-tagline { font-size: 12px; color: rgba(200,184,154,0.5); letter-spacing: 0.12em; text-transform: uppercase; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+    .hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+    .season-indicator { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,184,154,0.1); border: 1px solid rgba(200,184,154,0.2); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--tan); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .season-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--tan); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(52px, 8vw, 96px); font-weight: 700; color: var(--cream); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 8px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+    .hero-title em { font-style: italic; color: var(--tan); }
+    .hero-subtitle { font-family: 'Lora', serif; font-size: clamp(16px, 2.5vw, 22px); color: rgba(231,219,205,0.7); margin-bottom: 56px; font-style: italic; letter-spacing: 0.01em; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+    .waitlist-wrap { width: 100%; max-width: 480px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+    .waitlist-form { display: flex; gap: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(200,184,154,0.25); border-radius: 12px; padding: 6px; backdrop-filter: blur(10px); }
+    .waitlist-input { flex: 1; background: transparent; border: none; outline: none; padding: 14px 18px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--cream); min-width: 0; }
+    .waitlist-input::placeholder { color: rgba(200,184,154,0.45); }
+    .waitlist-btn { background: var(--tan); color: var(--soil); border: none; border-radius: 8px; padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s ease, transform 0.15s ease; letter-spacing: 0.02em; }
+    .waitlist-btn:hover { background: var(--tan-light); transform: translateY(-1px); }
     .waitlist-btn:active { transform: translateY(0); }
-
-    .waitlist-note {
-      font-size: 12px;
-      color: rgba(200,184,154,0.4);
-      margin-top: 12px;
-      letter-spacing: 0.03em;
-    }
-
-    .success-msg {
-      display: none;
-      background: rgba(92,126,99,0.2);
-      border: 1px solid rgba(92,126,99,0.4);
-      border-radius: 12px;
-      padding: 20px 24px;
-      color: var(--tan-light);
-      font-size: 15px;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    /* ── HERO BOTTOM STRIP ── */
-    .hero-bottom {
-      position: relative;
-      z-index: 10;
-      padding: 24px 48px;
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      border-top: 1px solid rgba(200,184,154,0.08);
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s forwards;
-    }
-
-    .module-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      color: rgba(200,184,154,0.5);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
+    .waitlist-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    .waitlist-note { font-size: 12px; color: rgba(200,184,154,0.4); margin-top: 12px; letter-spacing: 0.03em; }
+    .success-msg { display: none; background: rgba(92,126,99,0.2); border: 1px solid rgba(92,126,99,0.4); border-radius: 12px; padding: 20px 24px; color: var(--tan-light); font-size: 15px; text-align: center; line-height: 1.6; }
+    .error-msg { display: none; background: rgba(180,60,60,0.15); border: 1px solid rgba(180,60,60,0.3); border-radius: 12px; padding: 12px 18px; color: #f5c0c0; font-size: 13px; text-align: center; margin-top: 8px; }
+    .hero-bottom { position: relative; z-index: 10; padding: 24px 48px; display: flex; justify-content: center; gap: 48px; border-top: 1px solid rgba(200,184,154,0.08); opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+    .module-pill { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(200,184,154,0.5); letter-spacing: 0.06em; text-transform: uppercase; }
     .module-pill span { font-size: 16px; }
-
-    /* ── CURVED DIVIDER ── */
-    .curve-divider {
-      background: var(--green-dark);
-      line-height: 0;
-    }
+    .curve-divider { background: var(--green-dark); line-height: 0; }
     .curve-divider svg { display: block; width: 100%; }
-
-    /* ── SECTIONS ── */
     section { padding: 100px 24px; }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ── INTRO SECTION ── */
+    .container { max-width: 1100px; margin: 0 auto; }
     .intro { background: var(--cream); }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .section-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      font-weight: 500;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .section-body {
-      font-family: 'Lora', serif;
-      font-size: 17px;
-      color: var(--text-mid);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    /* ── WHY CARDS ── */
-    .why-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .why-card {
-      background: var(--cream-dark);
-      border: 1px solid var(--tan-light);
-      border-radius: 16px;
-      padding: 24px 28px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .why-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(44,36,22,0.08);
-    }
-
-    .why-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .why-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--green);
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .why-text {
-      font-family: 'Lora', serif;
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.65;
-    }
-
-    /* ── MODULES SECTION ── */
-    .modules-section {
-      background: var(--green-dark);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .modules-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(92,126,99,0.15) 0%, transparent 70%);
-    }
-
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .section-eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); font-weight: 500; margin-bottom: 20px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .section-title em { font-style: italic; color: var(--green); }
+    .section-body { font-family: 'Lora', serif; font-size: 17px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; }
+    .why-cards { display: flex; flex-direction: column; gap: 16px; }
+    .why-card { background: var(--cream-dark); border: 1px solid var(--tan-light); border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .why-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(44,36,22,0.08); }
+    .why-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: white; font-weight: bold; }
+    .why-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 500; margin-bottom: 4px; }
+    .why-text { font-family: 'Lora', serif; font-size: 15px; color: var(--text-mid); line-height: 1.65; }
+    .modules-section { background: var(--green-dark); position: relative; overflow: hidden; }
+    .modules-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(92,126,99,0.15) 0%, transparent 70%); }
     .modules-section .section-eyebrow { color: var(--tan); }
     .modules-section .section-title { color: var(--cream); }
     .modules-section .section-title em { color: var(--tan); }
-
-    .modules-header {
-      text-align: center;
-      margin-bottom: 64px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .module-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(200,184,154,0.12);
-      border-radius: 20px;
-      padding: 28px 24px;
-      text-align: center;
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-      cursor: default;
-    }
-
-    .module-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(200,184,154,0.25);
-      transform: translateY(-3px);
-    }
-
+    .modules-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 2; }
+    .modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; position: relative; z-index: 2; }
+    .module-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,184,154,0.12); border-radius: 20px; padding: 28px 24px; text-align: center; transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+    .module-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(200,184,154,0.25); transform: translateY(-3px); }
     .module-card .mod-emoji { font-size: 36px; margin-bottom: 14px; display: block; }
-
-    .module-card .mod-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 8px;
-    }
-
-    .module-card .mod-desc {
-      font-size: 13px;
-      color: rgba(200,184,154,0.55);
-      line-height: 1.6;
-    }
-
-    .module-card.coming-soon {
-      opacity: 0.45;
-    }
-
-    .module-card.coming-soon .mod-name::after {
-      content: ' — coming soon';
-      font-style: italic;
-      font-size: 12px;
-      color: rgba(200,184,154,0.4);
-    }
-
-    /* ── SCALE SECTION ── */
+    .module-card .mod-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+    .module-card .mod-desc { font-size: 13px; color: rgba(200,184,154,0.55); line-height: 1.6; }
+    .module-card.coming-soon { opacity: 0.45; }
+    .module-card.coming-soon .mod-name::after { content: ' — soon'; font-style: italic; font-size: 12px; color: rgba(200,184,154,0.4); }
     .scale-section { background: var(--cream-dark); }
-
-    .scale-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--tan-light);
-      margin-top: 56px;
-    }
-
-    .scale-card {
-      background: var(--cream);
-      padding: 32px 24px;
-      border-right: 1px solid var(--tan-light);
-      transition: background 0.2s ease;
-    }
-
+    .scale-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; border-radius: 20px; overflow: hidden; border: 1px solid var(--tan-light); margin-top: 56px; }
+    .scale-card { background: var(--cream); padding: 32px 24px; border-right: 1px solid var(--tan-light); transition: background 0.2s ease; }
     .scale-card:last-child { border-right: none; }
     .scale-card:hover { background: var(--cream-dark); }
-
-    .scale-tier {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-
-    .scale-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .scale-desc {
-      font-size: 13px;
-      color: var(--text-mid);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .scale-example {
-      font-size: 12px;
-      color: var(--text-light);
-      font-style: italic;
-      font-family: 'Lora', serif;
-    }
-
-    /* ── PHILOSOPHY SECTION ── */
-    .philosophy-section {
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .philosophy-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 56px;
-    }
-
-    .phil-card {
-      padding: 40px 32px;
-      border-radius: 24px;
-      border: 1px solid var(--tan-light);
-      background: var(--cream-dark);
-      transition: transform 0.2s ease;
-    }
-
+    .scale-tier { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); font-weight: 500; margin-bottom: 12px; }
+    .scale-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .scale-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
+    .scale-example { font-size: 12px; color: var(--text-light); font-style: italic; font-family: 'Lora', serif; }
+    .philosophy-section { background: var(--cream); text-align: center; }
+    .philosophy-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+    .phil-card { padding: 40px 32px; border-radius: 24px; border: 1px solid var(--tan-light); background: var(--cream-dark); transition: transform 0.2s ease; }
     .phil-card:hover { transform: translateY(-4px); }
-
-    .phil-marker {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
+    .phil-marker { width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
     .phil-card:nth-child(1) .phil-marker { background: rgba(58,90,64,0.12); }
     .phil-card:nth-child(2) .phil-marker { background: rgba(133,79,11,0.1); }
     .phil-card:nth-child(3) .phil-marker { background: rgba(24,95,165,0.1); }
-
-    .phil-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .phil-body {
-      font-family: 'Lora', serif;
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.75;
-    }
-
-    /* ── FINAL CTA ── */
-    .cta-section {
-      background: var(--green-dark);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(92,126,99,0.2) 0%, transparent 70%);
-    }
-
+    .phil-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .phil-body { font-family: 'Lora', serif; font-size: 15px; color: var(--text-mid); line-height: 1.75; }
+    .cta-section { background: var(--green-dark); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(92,126,99,0.2) 0%, transparent 70%); }
     .cta-section .section-eyebrow { color: var(--tan); position: relative; z-index: 2; }
     .cta-section .section-title { color: var(--cream); position: relative; z-index: 2; }
     .cta-section .section-title em { color: var(--tan); }
-
-    .cta-form-wrap {
-      max-width: 480px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .cta-note {
-      font-size: 14px;
-      color: rgba(200,184,154,0.5);
-      margin-top: 20px;
-      font-family: 'Lora', serif;
-      font-style: italic;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--soil);
-      padding: 40px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      color: var(--tan);
-      font-weight: 600;
-    }
-
-    .footer-copy {
-      font-size: 12px;
-      color: rgba(200,184,154,0.35);
-      letter-spacing: 0.04em;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
+    .cta-form-wrap { max-width: 480px; margin: 0 auto; position: relative; z-index: 2; }
+    .cta-note { font-size: 14px; color: rgba(200,184,154,0.5); margin-top: 20px; font-family: 'Lora', serif; font-style: italic; position: relative; z-index: 2; }
+    footer { background: var(--soil); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--tan); font-weight: 600; }
+    .footer-copy { font-size: 12px; color: rgba(200,184,154,0.35); letter-spacing: 0.04em; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 900px) {
       .intro-grid { grid-template-columns: 1fr; gap: 48px; }
       .modules-grid { grid-template-columns: repeat(2, 1fr); }
@@ -666,7 +130,6 @@
       .hero-bottom { gap: 24px; flex-wrap: wrap; padding: 20px 24px; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
-
     @media (max-width: 600px) {
       .modules-grid { grid-template-columns: repeat(2, 1fr); }
       .scale-grid { grid-template-columns: 1fr; }
@@ -678,7 +141,6 @@
 </head>
 <body>
 
-  <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-ring hero-ring-1"></div>
@@ -686,46 +148,27 @@
     <div class="hero-ring hero-ring-3"></div>
     <div class="leaf-mark leaf-mark-1">🌿</div>
     <div class="leaf-mark leaf-mark-2">🍂</div>
-
     <nav>
       <div class="nav-logo">The Seasonal House</div>
       <div class="nav-tagline">Coming Soon</div>
     </nav>
-
     <div class="hero-content">
       <div class="season-indicator">
         <div class="season-dot"></div>
         Spring 2026 · Building now
       </div>
-
-      <h1 class="hero-title">
-        Know your season.<br><em>Tend your land.</em>
-      </h1>
-
-      <p class="hero-subtitle">
-        A farming companion for every scale — from one backyard hive<br>to a full commercial operation.
-      </p>
-
+      <h1 class="hero-title">Know your season.<br><em>Tend your land.</em></h1>
+      <p class="hero-subtitle">A farming companion for every scale — from one backyard hive<br>to a full commercial operation.</p>
       <div class="waitlist-wrap">
         <div class="waitlist-form" id="heroForm">
-          <input
-            type="email"
-            class="waitlist-input"
-            id="heroEmail"
-            placeholder="your@email.com"
-            autocomplete="email"
-          >
-          <button class="waitlist-btn" onclick="submitWaitlist('heroEmail', 'heroForm', 'heroSuccess')">
-            Join the Waitlist
-          </button>
+          <input type="email" class="waitlist-input" id="heroEmail" placeholder="your@email.com" autocomplete="email">
+          <button class="waitlist-btn" id="heroBtn" onclick="submitWaitlist('heroEmail', 'heroForm', 'heroSuccess', 'heroError', 'heroBtn')">Join the Waitlist</button>
         </div>
-        <div class="success-msg" id="heroSuccess">
-          🌱 You're on the list. We'll be in touch when the season opens.
-        </div>
+        <div class="success-msg" id="heroSuccess">🌱 You're on the list. We'll be in touch when the season opens.</div>
+        <div class="error-msg" id="heroError"></div>
         <p class="waitlist-note">No spam. Just seasonal updates as we build.</p>
       </div>
     </div>
-
     <div class="hero-bottom">
       <div class="module-pill"><span>🐝</span> Beekeeping</div>
       <div class="module-pill"><span>🐔</span> Chickens</div>
@@ -735,55 +178,39 @@
     </div>
   </section>
 
-  <!-- curve -->
   <div class="curve-divider">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60">
       <path d="M0,0 C360,60 1080,60 1440,0 L1440,0 L0,0 Z" fill="#F7F2EA"/>
     </svg>
   </div>
 
-  <!-- ── INTRO ── -->
   <section class="intro">
     <div class="container">
       <div class="intro-grid">
         <div class="reveal">
           <p class="section-eyebrow">What we're building</p>
           <h2 class="section-title">Most apps tell you <em>what</em> to do.<br>We tell you why.</h2>
-          <p class="section-body">
-            The Seasonal House is a farming and homestead companion built around one simple idea: knowledge beats checklists. Every task comes with three layers — what to do, how to do it right, and why it matters right now.
-          </p>
-          <p class="section-body">
-            Whether you're keeping two hives in your backyard or managing a 200-hive commercial operation across six yards, the app adapts to your scale, your experience, and your season.
-          </p>
+          <p class="section-body">The Seasonal House is a farming and homestead companion built around one simple idea: knowledge beats checklists. Every task comes with three layers — what to do, how to do it right, and why it matters right now.</p>
+          <p class="section-body">Whether you're keeping two hives in your backyard or managing a 200-hive commercial operation across six yards, the app adapts to your scale, your experience, and your season.</p>
         </div>
         <div class="why-cards reveal">
           <div class="why-card">
             <div class="why-icon">✦</div>
-            <div>
-              <div class="why-label">What</div>
-              <div class="why-text">Add a pollen patty to Hive 2 before Friday's cold snap.</div>
-            </div>
+            <div><div class="why-label">What</div><div class="why-text">Add a pollen patty to Hive 2 before Friday's cold snap.</div></div>
           </div>
           <div class="why-card">
             <div class="why-icon">▸</div>
-            <div>
-              <div class="why-label">How</div>
-              <div class="why-text">Open the hive on a day above 50°F, center the patty above the cluster on top of the frames.</div>
-            </div>
+            <div><div class="why-label">How</div><div class="why-text">Open the hive on a day above 50°F, center the patty above the cluster on top of the frames.</div></div>
           </div>
           <div class="why-card">
             <div class="why-icon">◎</div>
-            <div>
-              <div class="why-label">Why</div>
-              <div class="why-text">Early spring colonies need protein to raise brood before natural pollen arrives. A well-fed colony now means a strong forager force when nectar flow begins.</div>
-            </div>
+            <div><div class="why-label">Why</div><div class="why-text">Early spring colonies need protein to raise brood before natural pollen arrives. A well-fed colony now means a strong forager force when nectar flow begins.</div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── MODULES ── -->
   <section class="modules-section">
     <div class="container">
       <div class="modules-header reveal">
@@ -791,87 +218,33 @@
         <h2 class="section-title">Build your <em>Seasonal House</em></h2>
       </div>
       <div class="modules-grid">
-        <div class="module-card reveal">
-          <span class="mod-emoji">🐝</span>
-          <div class="mod-name">Beekeeping</div>
-          <div class="mod-desc">Hive health, swarm management, honey harvest, winter prep — from one hive to a commercial yard.</div>
-        </div>
-        <div class="module-card reveal">
-          <span class="mod-emoji">🐔</span>
-          <div class="mod-name">Chickens</div>
-          <div class="mod-desc">Flock health, egg production cycles, coop management, molting, predator protection.</div>
-        </div>
-        <div class="module-card reveal">
-          <span class="mod-emoji">🌱</span>
-          <div class="mod-name">Garden</div>
-          <div class="mod-desc">Planting calendars, soil prep, pest management, harvest timing, crop rotation.</div>
-        </div>
-        <div class="module-card reveal">
-          <span class="mod-emoji">🌿</span>
-          <div class="mod-name">Herbs</div>
-          <div class="mod-desc">Growing, drying, medicinal use, seasonal harvest, preservation, companion planting.</div>
-        </div>
-        <div class="module-card coming-soon reveal">
-          <span class="mod-emoji">🌳</span>
-          <div class="mod-name">Orchard</div>
-          <div class="mod-desc">Pruning windows, pollination, harvest timing, winter protection.</div>
-        </div>
-        <div class="module-card coming-soon reveal">
-          <span class="mod-emoji">🍖</span>
-          <div class="mod-name">Preservation</div>
-          <div class="mod-desc">Smoking, canning, fermentation, food safety, seasonal preservation.</div>
-        </div>
-        <div class="module-card coming-soon reveal">
-          <span class="mod-emoji">🏡</span>
-          <div class="mod-name">Property</div>
-          <div class="mod-desc">Seasonal grounds care, composting, tool maintenance, firewood prep.</div>
-        </div>
-        <div class="module-card coming-soon reveal">
-          <span class="mod-emoji">🐇</span>
-          <div class="mod-name">Livestock</div>
-          <div class="mod-desc">Rabbits, ducks, quail, goats — care cycles, housing, breeding seasons.</div>
-        </div>
+        <div class="module-card reveal"><span class="mod-emoji">🐝</span><div class="mod-name">Beekeeping</div><div class="mod-desc">Hive health, swarm management, honey harvest, winter prep — from one hive to a commercial yard.</div></div>
+        <div class="module-card reveal"><span class="mod-emoji">🐔</span><div class="mod-name">Chickens</div><div class="mod-desc">Flock health, egg production cycles, coop management, molting, predator protection.</div></div>
+        <div class="module-card reveal"><span class="mod-emoji">🌱</span><div class="mod-name">Garden</div><div class="mod-desc">Planting calendars, soil prep, pest management, harvest timing, crop rotation.</div></div>
+        <div class="module-card reveal"><span class="mod-emoji">🌿</span><div class="mod-name">Herbs</div><div class="mod-desc">Growing, drying, medicinal use, seasonal harvest, preservation, companion planting.</div></div>
+        <div class="module-card coming-soon reveal"><span class="mod-emoji">🌳</span><div class="mod-name">Orchard</div><div class="mod-desc">Pruning windows, pollination, harvest timing, winter protection.</div></div>
+        <div class="module-card coming-soon reveal"><span class="mod-emoji">🍖</span><div class="mod-name">Preservation</div><div class="mod-desc">Smoking, canning, fermentation, food safety, seasonal preservation.</div></div>
+        <div class="module-card coming-soon reveal"><span class="mod-emoji">🏡</span><div class="mod-name">Property</div><div class="mod-desc">Seasonal grounds care, composting, tool maintenance, firewood prep.</div></div>
+        <div class="module-card coming-soon reveal"><span class="mod-emoji">🐇</span><div class="mod-name">Livestock</div><div class="mod-desc">Rabbits, ducks, quail, goats — care cycles, housing, breeding seasons.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ── SCALE ── -->
   <section class="scale-section">
     <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom: 0;">
+      <div class="reveal" style="text-align:center;">
         <p class="section-eyebrow">Built to scale</p>
         <h2 class="section-title">From your backyard<br>to your <em>operation</em></h2>
       </div>
       <div class="scale-grid reveal">
-        <div class="scale-card">
-          <div class="scale-tier">Homestead</div>
-          <div class="scale-name">The Hobbyist</div>
-          <div class="scale-desc">One property, a few hives, a flock, a garden. Simple seasonal guidance and the confidence to make the right call.</div>
-          <div class="scale-example">"I have 3 hives and 12 chickens in my backyard."</div>
-        </div>
-        <div class="scale-card">
-          <div class="scale-tier">Grower</div>
-          <div class="scale-name">The Enthusiast</div>
-          <div class="scale-desc">Multiple locations, growing production, more data. Multi-yard management and yield tracking built in.</div>
-          <div class="scale-example">"I run 10 hives across 3 properties and sell at the farmers market."</div>
-        </div>
-        <div class="scale-card">
-          <div class="scale-tier">Operation</div>
-          <div class="scale-name">The Producer</div>
-          <div class="scale-desc">Crew management, compliance logs, treatment records. Everything a semi-commercial operation needs — without the spreadsheets.</div>
-          <div class="scale-example">"I manage 75 hives and have two seasonal workers."</div>
-        </div>
-        <div class="scale-card">
-          <div class="scale-tier">Enterprise</div>
-          <div class="scale-name">The Commercial</div>
-          <div class="scale-desc">Full fleet management, team roles, API access, regulatory export. Built for operations that run like a business.</div>
-          <div class="scale-example">"We run 500 hives across 12 yards with a full-time crew."</div>
-        </div>
+        <div class="scale-card"><div class="scale-tier">Homestead</div><div class="scale-name">The Hobbyist</div><div class="scale-desc">One property, a few hives, a flock, a garden. Simple seasonal guidance and the confidence to make the right call.</div><div class="scale-example">"I have 3 hives and 12 chickens in my backyard."</div></div>
+        <div class="scale-card"><div class="scale-tier">Grower</div><div class="scale-name">The Enthusiast</div><div class="scale-desc">Multiple locations, growing production, more data. Multi-yard management and yield tracking built in.</div><div class="scale-example">"I run 10 hives across 3 properties and sell at the farmers market."</div></div>
+        <div class="scale-card"><div class="scale-tier">Operation</div><div class="scale-name">The Producer</div><div class="scale-desc">Crew management, compliance logs, treatment records. Everything a semi-commercial operation needs without the spreadsheets.</div><div class="scale-example">"I manage 75 hives and have two seasonal workers."</div></div>
+        <div class="scale-card"><div class="scale-tier">Enterprise</div><div class="scale-name">The Commercial</div><div class="scale-desc">Full fleet management, team roles, API access, regulatory export. Built for operations that run like a business.</div><div class="scale-example">"We run 500 hives across 12 yards with a full-time crew."</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ── PHILOSOPHY ── -->
   <section class="philosophy-section">
     <div class="container">
       <div class="reveal">
@@ -879,26 +252,13 @@
         <h2 class="section-title">A knowledgeable neighbor,<br>not a <em>manual</em></h2>
       </div>
       <div class="philosophy-cards">
-        <div class="phil-card reveal">
-          <div class="phil-marker">🗓</div>
-          <div class="phil-title">Seasonal first</div>
-          <div class="phil-body">Every screen knows what time of year it is. Tasks surface when they matter. Windows close when they close. The app lives in the same rhythm as your land.</div>
-        </div>
-        <div class="phil-card reveal">
-          <div class="phil-marker">📖</div>
-          <div class="phil-title">Knowledge over dependency</div>
-          <div class="phil-body">You shouldn't need an app to make a good decision. The Seasonal House is designed to build your understanding over time — not keep you guessing.</div>
-        </div>
-        <div class="phil-card reveal">
-          <div class="phil-marker">⚖️</div>
-          <div class="phil-title">Flexible depth</div>
-          <div class="phil-body">Set your experience level per module. Skim the surface when you're confident. Go deep when you need to. The information is always there — on your terms.</div>
-        </div>
+        <div class="phil-card reveal"><div class="phil-marker">🗓</div><div class="phil-title">Seasonal first</div><div class="phil-body">Every screen knows what time of year it is. Tasks surface when they matter. Windows close when they close. The app lives in the same rhythm as your land.</div></div>
+        <div class="phil-card reveal"><div class="phil-marker">📖</div><div class="phil-title">Knowledge over dependency</div><div class="phil-body">You shouldn't need an app to make a good decision. The Seasonal House is designed to build your understanding over time — not keep you guessing.</div></div>
+        <div class="phil-card reveal"><div class="phil-marker">⚖️</div><div class="phil-title">Flexible depth</div><div class="phil-body">Set your experience level per module. Skim the surface when you're confident. Go deep when you need to. The information is always there — on your terms.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ── FINAL CTA ── -->
   <section class="cta-section">
     <div class="container">
       <p class="section-eyebrow reveal">Early access</p>
@@ -906,33 +266,81 @@
       <br>
       <div class="cta-form-wrap reveal">
         <div class="waitlist-form" id="ctaForm">
-          <input
-            type="email"
-            class="waitlist-input"
-            id="ctaEmail"
-            placeholder="your@email.com"
-            autocomplete="email"
-          >
-          <button class="waitlist-btn" onclick="submitWaitlist('ctaEmail', 'ctaForm', 'ctaSuccess')">
-            Join the Waitlist
-          </button>
+          <input type="email" class="waitlist-input" id="ctaEmail" placeholder="your@email.com" autocomplete="email">
+          <button class="waitlist-btn" id="ctaBtn" onclick="submitWaitlist('ctaEmail', 'ctaForm', 'ctaSuccess', 'ctaError', 'ctaBtn')">Join the Waitlist</button>
         </div>
-        <div class="success-msg" id="ctaSuccess">
-          🌱 You're on the list. We'll be in touch when the season opens.
-        </div>
+        <div class="success-msg" id="ctaSuccess">🌱 You're on the list. We'll be in touch when the season opens.</div>
+        <div class="error-msg" id="ctaError"></div>
       </div>
       <p class="cta-note reveal">Early waitlist members get free Pro access for the first season.</p>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-brand">The Seasonal House</div>
     <div class="footer-copy">© 2026 The Seasonal House · The Ox and The Owl LLC · All rights reserved</div>
   </footer>
 
   <script>
-    // ── SCROLL REVEAL ──
+    const BEEHIIV_API_KEY = 'WLRdsgHg7bQMDZMgJKmW9g8eWruzu5UlLnbMVfnDPM7DmGcqGtOnF9LA16AEZVHp';
+    const PUBLICATION_ID = 'pub_7b5f6f8e-e405-4050-9356-5319ba0a7cc1';
+
+    async function submitWaitlist(inputId, formId, successId, errorId, btnId) {
+      const email = document.getElementById(inputId).value.trim();
+      const btn = document.getElementById(btnId);
+      const errorEl = document.getElementById(errorId);
+
+      errorEl.style.display = 'none';
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+
+      try {
+        const response = await fetch(`https://api.beehiiv.com/v2/publications/${PUBLICATION_ID}/subscriptions`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${BEEHIIV_API_KEY}`
+          },
+          body: JSON.stringify({
+            email: email,
+            reactivate_existing: false,
+            send_welcome_email: true,
+            utm_source: 'landing_page',
+            utm_medium: 'organic',
+            utm_campaign: 'waitlist'
+          })
+        });
+
+        if (response.ok || response.status === 201) {
+          document.getElementById(formId).style.display = 'none';
+          document.getElementById(successId).style.display = 'block';
+        } else {
+          const data = await response.json();
+          throw new Error(data.message || 'Something went wrong.');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Join the Waitlist';
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.style.display = 'block';
+        console.error('Beehiiv error:', err);
+      }
+    }
+
+    document.getElementById('heroEmail').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitWaitlist('heroEmail', 'heroForm', 'heroSuccess', 'heroError', 'heroBtn');
+    });
+    document.getElementById('ctaEmail').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitWaitlist('ctaEmail', 'ctaForm', 'ctaSuccess', 'ctaError', 'ctaBtn');
+    });
+
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
@@ -943,30 +351,6 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
-
-    // ── WAITLIST SUBMIT ──
-    function submitWaitlist(inputId, formId, successId) {
-      const email = document.getElementById(inputId).value.trim();
-      if (!email || !email.includes('@')) {
-        document.getElementById(inputId).style.borderBottom = '1px solid #C8583A';
-        document.getElementById(inputId).placeholder = 'Please enter a valid email';
-        return;
-      }
-      // Hide form, show success
-      document.getElementById(formId).style.display = 'none';
-      document.getElementById(successId).style.display = 'block';
-
-      // In production this will POST to your Beehiiv API
-      console.log('Waitlist signup:', email);
-    }
-
-    // Enter key support
-    document.getElementById('heroEmail').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') submitWaitlist('heroEmail', 'heroForm', 'heroSuccess');
-    });
-    document.getElementById('ctaEmail').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') submitWaitlist('ctaEmail', 'ctaForm', 'ctaSuccess');
-    });
   </script>
 </body>
 </html>
