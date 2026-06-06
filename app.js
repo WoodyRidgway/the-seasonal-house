@@ -391,3 +391,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// ── BEEKEEPING MODULE INTEGRATION ──
+window.appState = window.appState || {};
+
+// Override navigate to handle beekeeping module
+const _originalNavigate = navigate;
+window.navigate = function(screen) {
+  if (screen === 'beekeeping') {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const bkScreen = document.getElementById('screen-beekeeping');
+    if (bkScreen) {
+      bkScreen.classList.add('active');
+      renderBeekeepingModule();
+    }
+    document.getElementById('nav-title').textContent = 'Beekeeping';
+    return;
+  }
+  _originalNavigate(screen);
+};
+
+// Sync state to window.appState
+const _originalLoadWeather = loadWeather;
+window.loadWeather = async function() {
+  await _originalLoadWeather();
+  window.appState.weather = state.weather;
+};
+
+// Sync experience level
+const _originalSetExperience = setExperience;
+window.setExperience = function(level) {
+  _originalSetExperience(level);
+  window.appState.experienceLevel = level;
+  state.experienceLevel = level;
+};
