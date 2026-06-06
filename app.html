@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>The Seasonal House</title>
+  <meta name="description" content="Know your season. Tend your land.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── TOP NAV ── -->
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <div class="app-title" id="nav-title">The Seasonal House</div>
+      <div class="season-badge">
+        <div class="season-dot"></div>
+        Spring · Week 8
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCREEN: DASHBOARD
+  ══════════════════════════════════════ -->
+  <div class="screen active" id="screen-dashboard">
+
+    <!-- Weather Strip -->
+    <div class="weather-strip">
+      <div>
+        <div class="weather-main">☀️ 61°F · Partly cloudy</div>
+        <div class="weather-sub">Chagrin Falls, OH</div>
+      </div>
+      <div class="weather-alert">⚠ Frost risk Thu</div>
+    </div>
+
+    <!-- Priority Tasks -->
+    <div class="section-label">Priority tasks this week</div>
+    <div id="task-list"></div>
+
+    <!-- My Modules -->
+    <div class="section-label" style="margin-top:20px;">My modules</div>
+    <div class="module-grid">
+      <div class="module-card" onclick="navigate('modules')">
+        <span class="mod-emoji">🐝</span>
+        <div class="mod-name">Beekeeping</div>
+        <div class="mod-count">3 tasks</div>
+      </div>
+      <div class="module-card" onclick="navigate('modules')">
+        <span class="mod-emoji">🐔</span>
+        <div class="mod-name">Chickens</div>
+        <div class="mod-count">2 tasks</div>
+      </div>
+      <div class="module-card" onclick="navigate('modules')">
+        <span class="mod-emoji">🌱</span>
+        <div class="mod-name">Garden</div>
+        <div class="mod-count">4 tasks</div>
+      </div>
+      <div class="module-card add-module" onclick="navigate('modules')">
+        <span class="mod-emoji">＋</span>
+        <div class="mod-name">Add module</div>
+        <div class="mod-count">6 available</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCREEN: TASK DETAIL
+  ══════════════════════════════════════ -->
+  <div class="screen" id="screen-task-detail">
+
+    <div class="detail-header">
+      <button class="back-btn" onclick="backToDashboard()">← Dashboard</button>
+      <div class="detail-module" id="detail-module">🐝 Beekeeping · Spring</div>
+      <div class="detail-title" id="detail-title">Task title</div>
+    </div>
+
+    <!-- Experience Toggle -->
+    <div class="exp-toggle">
+      <button class="exp-btn active" data-level="beginner" onclick="setExperience('beginner')">Beginner</button>
+      <button class="exp-btn" data-level="intermediate" onclick="setExperience('intermediate')">Intermediate</button>
+      <button class="exp-btn" data-level="advanced" onclick="setExperience('advanced')">Advanced</button>
+    </div>
+
+    <!-- What -->
+    <div class="layer-card">
+      <div class="layer-label layer-what">✦ What</div>
+      <div class="layer-text" id="layer-what"></div>
+    </div>
+
+    <!-- How -->
+    <div class="layer-card">
+      <div class="layer-label layer-how">▸ How</div>
+      <div class="layer-text" id="layer-how"></div>
+    </div>
+
+    <!-- Why -->
+    <div class="layer-card">
+      <div class="layer-label layer-why">◎ Why</div>
+      <div class="layer-text" id="layer-why"></div>
+    </div>
+
+    <!-- Beginner Note -->
+    <div class="beginner-note">
+      <div class="beginner-note-label">⚠ Note</div>
+      <div class="beginner-note-text" id="beginner-note"></div>
+    </div>
+
+    <!-- Complete -->
+    <button class="complete-btn" onclick="completeTask()">✓ Mark complete & log</button>
+    <div class="advisor-link" onclick="navigate('advisor')">Ask the Advisor about this task ↗</div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCREEN: MODULES
+  ══════════════════════════════════════ -->
+  <div class="screen" id="screen-modules">
+
+    <div class="section-label">Active modules</div>
+    <div class="module-grid" style="margin-bottom:20px;">
+      <div class="module-card">
+        <span class="mod-emoji">🐝</span>
+        <div class="mod-name">Beekeeping</div>
+        <div class="mod-count">Intermediate</div>
+      </div>
+      <div class="module-card">
+        <span class="mod-emoji">🐔</span>
+        <div class="mod-name">Chickens</div>
+        <div class="mod-count">Beginner</div>
+      </div>
+      <div class="module-card">
+        <span class="mod-emoji">🌱</span>
+        <div class="mod-name">Garden</div>
+        <div class="mod-count">Intermediate</div>
+      </div>
+    </div>
+
+    <div class="section-label">Available modules</div>
+    <div class="module-grid">
+      <div class="module-card add-module">
+        <span class="mod-emoji">🌿</span>
+        <div class="mod-name">Herbs</div>
+        <div class="mod-count">Coming soon</div>
+      </div>
+      <div class="module-card add-module">
+        <span class="mod-emoji">🌳</span>
+        <div class="mod-name">Orchard</div>
+        <div class="mod-count">Coming soon</div>
+      </div>
+      <div class="module-card add-module">
+        <span class="mod-emoji">🍖</span>
+        <div class="mod-name">Preservation</div>
+        <div class="mod-count">Coming soon</div>
+      </div>
+      <div class="module-card add-module">
+        <span class="mod-emoji">🏡</span>
+        <div class="mod-name">Property</div>
+        <div class="mod-count">Coming soon</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCREEN: ADVISOR
+  ══════════════════════════════════════ -->
+  <div class="screen" id="screen-advisor">
+
+    <div class="advisor-header">
+      <div class="advisor-title">The Advisor</div>
+      <div class="advisor-sub">Seasonal guidance for your land · Spring · NE Ohio</div>
+    </div>
+
+    <div style="padding-top:16px;">
+      <div class="section-label">Ask anything</div>
+      <div class="suggested-questions">
+        <button class="suggested-q" onclick="askSuggested('My hive seems less active than last week — what should I check?')">Hive less active?</button>
+        <button class="suggested-q" onclick="askSuggested('When should I add a super to my hive?')">When to add a super?</button>
+        <button class="suggested-q" onclick="askSuggested('One of my chickens is lethargic — what do I look for?')">Lethargic chicken?</button>
+        <button class="suggested-q" onclick="askSuggested('What should I be planting in my garden right now?')">What to plant now?</button>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <div class="message assistant">Hey — I'm your Seasonal House Advisor. I know it's Spring in NE Ohio and you're running Beekeeping, Chickens, and Garden modules. What's on your mind?</div>
+      </div>
+
+      <div class="chat-input-wrap">
+        <input type="text" class="chat-input" id="chat-input" placeholder="Ask about your hives, flock, or garden...">
+        <button class="chat-send" id="chat-send" onclick="sendMessage()">↑</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCREEN: LOGS
+  ══════════════════════════════════════ -->
+  <div class="screen" id="screen-logs">
+
+    <div class="section-label">Recent activity</div>
+    <div id="log-list"></div>
+
+    <div class="card" style="text-align:center; padding:20px; border-style:dashed; opacity:0.6; margin-top:8px;">
+      <div style="font-size:24px; margin-bottom:8px;">📋</div>
+      <div style="font-size:13px; color:var(--text-mid);">Tap any task to log it after completing it</div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCREEN: SETTINGS
+  ══════════════════════════════════════ -->
+  <div class="screen" id="screen-settings">
+
+    <div class="card-lg">
+      <div class="section-label" style="margin-top:0;">Account</div>
+      <div class="settings-row">
+        <div class="settings-label">Name</div>
+        <div class="settings-value">Woody Ridgway</div>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Location</div>
+        <div class="settings-value">Chagrin Falls, OH</div>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Plan</div>
+        <div class="settings-value" style="color:var(--green); font-weight:500;">Pro — Early Access</div>
+      </div>
+    </div>
+
+    <div class="card-lg">
+      <div class="section-label" style="margin-top:0;">Notifications</div>
+      <div class="settings-row">
+        <div class="settings-label">Seasonal alerts</div>
+        <div class="toggle on" onclick="toggleSetting(this)"><div class="toggle-thumb"></div></div>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Weather warnings</div>
+        <div class="toggle on" onclick="toggleSetting(this)"><div class="toggle-thumb"></div></div>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Weekly digest</div>
+        <div class="toggle on" onclick="toggleSetting(this)"><div class="toggle-thumb"></div></div>
+      </div>
+    </div>
+
+    <div class="card-lg">
+      <div class="section-label" style="margin-top:0;">Default experience level</div>
+      <div class="exp-toggle">
+        <button class="exp-btn" data-level="beginner" onclick="setExperience('beginner')">Beginner</button>
+        <button class="exp-btn active" data-level="intermediate" onclick="setExperience('intermediate')">Intermediate</button>
+        <button class="exp-btn" data-level="advanced" onclick="setExperience('advanced')">Advanced</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       BOTTOM NAV
+  ══════════════════════════════════════ -->
+  <div class="bottom-nav">
+    <button class="nav-item active" data-nav="dashboard" onclick="navigate('dashboard')">
+      <div class="nav-icon">🏡</div>
+      <div class="nav-label">Home</div>
+    </button>
+    <button class="nav-item" data-nav="modules" onclick="navigate('modules')">
+      <div class="nav-icon">📋</div>
+      <div class="nav-label">Modules</div>
+    </button>
+    <button class="nav-item" data-nav="advisor" onclick="navigate('advisor')">
+      <div class="nav-icon">🌿</div>
+      <div class="nav-label">Advisor</div>
+    </button>
+    <button class="nav-item" data-nav="logs" onclick="navigate('logs')">
+      <div class="nav-icon">📓</div>
+      <div class="nav-label">Logs</div>
+    </button>
+    <button class="nav-item" data-nav="settings" onclick="navigate('settings')">
+      <div class="nav-icon">⚙️</div>
+      <div class="nav-label">Settings</div>
+    </button>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
