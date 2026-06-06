@@ -8,34 +8,120 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="app.css">
+  <style>
+    .weather-good {
+      font-size: 11px;
+      color: var(--routine);
+      background: var(--routine-bg);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .window-alert {
+      background: var(--soon-bg);
+      border: 1px solid #E8C97A;
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+    .window-alert-icon { font-size: 18px; flex-shrink: 0; }
+    .window-alert-text { font-size: 13px; color: var(--soon); font-weight: 500; }
+    .inspection-warning {
+      background: var(--urgent-bg);
+      border: 1px solid #E8A0A0;
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      display: none;
+    }
+    .inspection-warning-text {
+      font-size: 13px;
+      color: var(--urgent);
+      line-height: 1.5;
+    }
+    .weather-detail {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .weather-stat {
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 8px 12px;
+      flex: 1;
+      text-align: center;
+    }
+    .weather-stat-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .weather-stat-label {
+      font-size: 10px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .hive-safe {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .hive-safe.safe { background: var(--routine-bg); color: var(--routine); }
+    .hive-safe.unsafe { background: var(--urgent-bg); color: var(--urgent); }
+  </style>
 </head>
 <body>
 
 <div id="app">
 
-  <!-- ── TOP NAV ── -->
+  <!-- TOP NAV -->
   <div class="top-nav">
     <div class="top-nav-inner">
       <div class="app-title" id="nav-title">The Seasonal House</div>
-      <div class="season-badge">
+      <div class="season-badge" id="season-badge">
         <div class="season-dot"></div>
         Spring · Week 8
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN: DASHBOARD
-  ══════════════════════════════════════ -->
+  <!-- ══ DASHBOARD ══ -->
   <div class="screen active" id="screen-dashboard">
 
-    <!-- Weather Strip -->
-    <div class="weather-strip">
-      <div>
-        <div class="weather-main">☀️ 61°F · Partly cloudy</div>
+    <!-- Weather Card -->
+    <div class="card-lg" style="margin-bottom:14px;">
+      <div id="weather-strip">
+        <div class="weather-main">🌤 Loading weather...</div>
         <div class="weather-sub">Chagrin Falls, OH</div>
       </div>
-      <div class="weather-alert">⚠ Frost risk Thu</div>
+      <div class="weather-detail" id="weather-detail" style="display:none;">
+        <div class="weather-stat">
+          <div class="weather-stat-value" id="stat-humidity">--%</div>
+          <div class="weather-stat-label">Humidity</div>
+        </div>
+        <div class="weather-stat">
+          <div class="weather-stat-value" id="stat-wind">-- mph</div>
+          <div class="weather-stat-label">Wind</div>
+        </div>
+        <div class="weather-stat">
+          <div class="weather-stat-value" id="stat-feels">--°F</div>
+          <div class="weather-stat-label">Feels like</div>
+        </div>
+      </div>
+      <div id="hive-safe-badge"></div>
+    </div>
+
+    <!-- Seasonal Window Alert -->
+    <div class="window-alert" id="window-alert">
+      <div class="window-alert-icon">🗓</div>
+      <div class="window-alert-text" id="window-alert-text"></div>
     </div>
 
     <!-- Priority Tasks -->
@@ -60,7 +146,7 @@
         <div class="mod-name">Garden</div>
         <div class="mod-count">4 tasks</div>
       </div>
-      <div class="module-card add-module" onclick="navigate('modules')">
+      <div class="module-card add-module">
         <span class="mod-emoji">＋</span>
         <div class="mod-name">Add module</div>
         <div class="mod-count">6 available</div>
@@ -69,15 +155,18 @@
 
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN: TASK DETAIL
-  ══════════════════════════════════════ -->
+  <!-- ══ TASK DETAIL ══ -->
   <div class="screen" id="screen-task-detail">
 
     <div class="detail-header">
       <button class="back-btn" onclick="backToDashboard()">← Dashboard</button>
       <div class="detail-module" id="detail-module">🐝 Beekeeping · Spring</div>
       <div class="detail-title" id="detail-title">Task title</div>
+    </div>
+
+    <!-- Inspection Warning -->
+    <div class="inspection-warning" id="inspection-warning">
+      <div class="inspection-warning-text">⚠ Current temp is <span id="inspection-temp"></span>°F — below the 50°F minimum for opening hives safely. Wait for a warmer window before completing this task.</div>
     </div>
 
     <!-- Experience Toggle -->
@@ -105,23 +194,19 @@
       <div class="layer-text" id="layer-why"></div>
     </div>
 
-    <!-- Beginner Note -->
+    <!-- Note -->
     <div class="beginner-note">
       <div class="beginner-note-label">⚠ Note</div>
       <div class="beginner-note-text" id="beginner-note"></div>
     </div>
 
-    <!-- Complete -->
     <button class="complete-btn" onclick="completeTask()">✓ Mark complete & log</button>
     <div class="advisor-link" onclick="navigate('advisor')">Ask the Advisor about this task ↗</div>
 
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN: MODULES
-  ══════════════════════════════════════ -->
+  <!-- ══ MODULES ══ -->
   <div class="screen" id="screen-modules">
-
     <div class="section-label">Active modules</div>
     <div class="module-grid" style="margin-bottom:20px;">
       <div class="module-card">
@@ -140,7 +225,6 @@
         <div class="mod-count">Intermediate</div>
       </div>
     </div>
-
     <div class="section-label">Available modules</div>
     <div class="module-grid">
       <div class="module-card add-module">
@@ -164,60 +248,44 @@
         <div class="mod-count">Coming soon</div>
       </div>
     </div>
-
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN: ADVISOR
-  ══════════════════════════════════════ -->
+  <!-- ══ ADVISOR ══ -->
   <div class="screen" id="screen-advisor">
-
     <div class="advisor-header">
       <div class="advisor-title">The Advisor</div>
-      <div class="advisor-sub">Seasonal guidance for your land · Spring · NE Ohio</div>
+      <div class="advisor-sub" id="advisor-sub">Seasonal guidance · Spring · NE Ohio</div>
     </div>
-
     <div style="padding-top:16px;">
       <div class="section-label">Ask anything</div>
       <div class="suggested-questions">
-        <button class="suggested-q" onclick="askSuggested('My hive seems less active than last week — what should I check?')">Hive less active?</button>
+        <button class="suggested-q" onclick="askSuggested('My hive seems less active than last week -- what should I check?')">Hive less active?</button>
         <button class="suggested-q" onclick="askSuggested('When should I add a super to my hive?')">When to add a super?</button>
-        <button class="suggested-q" onclick="askSuggested('One of my chickens is lethargic — what do I look for?')">Lethargic chicken?</button>
+        <button class="suggested-q" onclick="askSuggested('One of my chickens is lethargic -- what do I look for?')">Lethargic chicken?</button>
         <button class="suggested-q" onclick="askSuggested('What should I be planting in my garden right now?')">What to plant now?</button>
       </div>
-
       <div class="chat-messages" id="chat-messages">
-        <div class="message assistant">Hey — I'm your Seasonal House Advisor. I know it's Spring in NE Ohio and you're running Beekeeping, Chickens, and Garden modules. What's on your mind?</div>
+        <div class="message assistant">Hey -- I'm your Seasonal House Advisor. I know it's Spring in NE Ohio and you're running Beekeeping, Chickens, and Garden modules. What's on your mind?</div>
       </div>
-
       <div class="chat-input-wrap">
         <input type="text" class="chat-input" id="chat-input" placeholder="Ask about your hives, flock, or garden...">
         <button class="chat-send" id="chat-send" onclick="sendMessage()">↑</button>
       </div>
     </div>
-
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN: LOGS
-  ══════════════════════════════════════ -->
+  <!-- ══ LOGS ══ -->
   <div class="screen" id="screen-logs">
-
     <div class="section-label">Recent activity</div>
     <div id="log-list"></div>
-
     <div class="card" style="text-align:center; padding:20px; border-style:dashed; opacity:0.6; margin-top:8px;">
       <div style="font-size:24px; margin-bottom:8px;">📋</div>
       <div style="font-size:13px; color:var(--text-mid);">Tap any task to log it after completing it</div>
     </div>
-
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN: SETTINGS
-  ══════════════════════════════════════ -->
+  <!-- ══ SETTINGS ══ -->
   <div class="screen" id="screen-settings">
-
     <div class="card-lg">
       <div class="section-label" style="margin-top:0;">Account</div>
       <div class="settings-row">
@@ -229,11 +297,14 @@
         <div class="settings-value">Chagrin Falls, OH</div>
       </div>
       <div class="settings-row">
+        <div class="settings-label">Zone</div>
+        <div class="settings-value">6a</div>
+      </div>
+      <div class="settings-row">
         <div class="settings-label">Plan</div>
-        <div class="settings-value" style="color:var(--green); font-weight:500;">Pro — Early Access</div>
+        <div class="settings-value" style="color:var(--green); font-weight:500;">Pro -- Early Access</div>
       </div>
     </div>
-
     <div class="card-lg">
       <div class="section-label" style="margin-top:0;">Notifications</div>
       <div class="settings-row">
@@ -249,7 +320,6 @@
         <div class="toggle on" onclick="toggleSetting(this)"><div class="toggle-thumb"></div></div>
       </div>
     </div>
-
     <div class="card-lg">
       <div class="section-label" style="margin-top:0;">Default experience level</div>
       <div class="exp-toggle">
@@ -258,12 +328,9 @@
         <button class="exp-btn" data-level="advanced" onclick="setExperience('advanced')">Advanced</button>
       </div>
     </div>
-
   </div>
 
-  <!-- ══════════════════════════════════════
-       BOTTOM NAV
-  ══════════════════════════════════════ -->
+  <!-- BOTTOM NAV -->
   <div class="bottom-nav">
     <button class="nav-item active" data-nav="dashboard" onclick="navigate('dashboard')">
       <div class="nav-icon">🏡</div>
