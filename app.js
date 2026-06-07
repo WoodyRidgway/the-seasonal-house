@@ -148,6 +148,15 @@ function renderWeather(data) {
 function updateSeasonBadge(data) {
   const badge = document.getElementById('season-badge');
   if (badge) badge.innerHTML = `<div class="season-dot"></div>${data.season} · Week ${data.seasonWeek} of ${data.totalWeeks}`;
+
+  // Update advisor sub-header and welcome message with live context
+  const advisorSub = document.getElementById('advisor-sub');
+  if (advisorSub) advisorSub.textContent = `Seasonal guidance · ${data.season} · NE Ohio · ${data.temp}°F`;
+
+  const firstMsg = document.querySelector('.message.assistant[data-default="true"]');
+  if (firstMsg) {
+    firstMsg.textContent = `Hey -- I'm your Seasonal House Advisor. It's ${data.season} in NE Ohio and ${data.temp}°F right now. You're running Beekeeping, Chickens, and Garden modules. What's on your mind?`;
+  }
 }
 
 function checkInspectionWarning(data) {
@@ -321,7 +330,8 @@ async function sendMessage() {
         location: 'Northeast Ohio, Zone 6a',
         temp: state.weather?.temp || null,
         modules: ['Beekeeping', 'Chickens', 'Garden'],
-        history: state.chatMessages.slice(-6)
+        experienceLevel: state.experienceLevel || 'beginner',
+        history: state.chatMessages.slice(-8)
       })
     });
 
@@ -337,7 +347,7 @@ async function sendMessage() {
     }
   } catch (err) {
     document.getElementById('thinking-msg')?.remove();
-    addMessage('The Advisor is coming soon -- we\'re still building that feature!', 'assistant');
+    addMessage('Having trouble reaching the Advisor right now -- check your connection and try again.', 'assistant');
   }
 
   sendBtn.disabled = false;
