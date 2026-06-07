@@ -16,16 +16,6 @@ const state = {
 };
 
 // ── WEATHER ICONS ──
-const weatherEmoji = {
-  'sunny': 'sunny',
-  'mostly-sunny': 'mostly sunny',
-  'cloudy': 'cloudy',
-  'rainy': 'rainy',
-  'stormy': 'stormy',
-  'snowy': 'snowy',
-  'foggy': 'foggy'
-};
-
 const weatherIcons = {
   'sunny': '☀️',
   'mostly-sunny': '🌤',
@@ -126,18 +116,14 @@ async function loadWeather() {
   try {
     const res = await fetch('/api/weather');
     const data = await res.json();
-
-    if (data.error) {
-      setWeatherFallback();
-      return;
-    }
-
+    if (data.error) { setWeatherFallback(); return; }
     state.weather = data;
+    window.appState = window.appState || {};
+    window.appState.weather = data;
     renderWeather(data);
     updateSeasonBadge(data);
     checkInspectionWarning(data);
     renderWindowAlert(data);
-
   } catch (err) {
     console.error('Weather load failed:', err);
     setWeatherFallback();
@@ -150,7 +136,6 @@ function renderWeather(data) {
   const frostHTML = data.frostRisk && data.frostDay
     ? `<div class="weather-alert">⚠ Frost risk ${data.frostDay}</div>`
     : `<div class="weather-good">✓ No frost risk</div>`;
-
   strip.innerHTML = `
     <div>
       <div class="weather-main">${icon} ${data.temp}°F · ${capitalizeFirst(data.description)}</div>
@@ -162,9 +147,7 @@ function renderWeather(data) {
 
 function updateSeasonBadge(data) {
   const badge = document.getElementById('season-badge');
-  if (badge) {
-    badge.innerHTML = `<div class="season-dot"></div>${data.season} · Week ${data.seasonWeek} of ${data.totalWeeks}`;
-  }
+  if (badge) badge.innerHTML = `<div class="season-dot"></div>${data.season} · Week ${data.seasonWeek} of ${data.totalWeeks}`;
 }
 
 function checkInspectionWarning(data) {
@@ -254,6 +237,8 @@ function renderTaskDetail(task, level) {
 
 function setExperience(level) {
   state.experienceLevel = level;
+  window.appState = window.appState || {};
+  window.appState.experienceLevel = level;
   if (state.currentTask) renderTaskDetail(state.currentTask, level);
 }
 
@@ -384,6 +369,12 @@ document.addEventListener('DOMContentLoaded', () => {
   navigate('dashboard');
   loadWeather();
 
+  // Expose log helper for beekeeping module
+  window._addToMainLog = function(entry) {
+    state.logs.unshift(entry);
+    renderLogs();
+  };
+
   document.getElementById('chat-input').addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -395,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ── BEEKEEPING MODULE INTEGRATION ──
 window.appState = window.appState || {};
 
-// Override navigate to handle beekeeping module
+// Override navigate to handle beekeeping screens
 const _originalNavigate = navigate;
 window.navigate = function(screen) {
   if (screen === 'beekeeping') {
@@ -412,17 +403,9 @@ window.navigate = function(screen) {
   _originalNavigate(screen);
 };
 
-// Sync state to window.appState
+// Sync weather to appState
 const _originalLoadWeather = loadWeather;
 window.loadWeather = async function() {
   await _originalLoadWeather();
   window.appState.weather = state.weather;
-};
-
-// Sync experience level
-const _originalSetExperience = setExperience;
-window.setExperience = function(level) {
-  _originalSetExperience(level);
-  window.appState.experienceLevel = level;
-  state.experienceLevel = level;
 };

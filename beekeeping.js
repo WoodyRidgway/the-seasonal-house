@@ -143,12 +143,12 @@ const beekeepingTasks = [
       advanced: 'Pull supers post-flow. Check moisture content before extraction -- above 18.6% risks fermentation. Extract, filter, bottle.'
     },
     how: {
-      beginner: 'Wait until most of the honey cells are capped with wax (white or tan wax caps covering the cells). Do the shake test -- hold the frame horizontally and shake it. If nectar drips out the honey is not ready. If nothing drips it\'s ready. Remove the bees from the super using a bee brush or bee escape board. Bring the frames inside to extract.',
-      intermediate: 'Clear bees with escape board 24 hours before harvest. Extract within 24 hours of removal -- cold honey extracts poorly. Uncap with hot knife, spin in extractor, filter through 400 micron filter, let settle 24 hours before bottling.',
+      beginner: 'Wait until most of the honey cells are capped with wax. Do the shake test -- hold the frame horizontally and shake it. If nectar drips out the honey is not ready. If nothing drips it\'s ready. Remove the bees from the super using a bee brush or bee escape board. Bring the frames inside to extract.',
+      intermediate: 'Clear bees with escape board 24 hours before harvest. Extract within 24 hours of removal. Uncap with hot knife, spin in extractor, filter through 400 micron filter, let settle 24 hours before bottling.',
       advanced: 'Refractometer check before extraction -- target under 18.6% moisture. Warm room extraction (80F+) improves yield. Double filter, settle minimum 48 hours for best clarity. Label with harvest date and location.'
     },
     why: {
-      beginner: 'Harvesting at the right time means better honey that won\'t ferment in the jar. Honey that isn\'t fully capped has too much water content and can go bad. The nectar flow in NE Ohio typically ends in mid-July -- after that your bees stop bringing in much new nectar and it\'s time to harvest what they\'ve stored.',
+      beginner: 'Harvesting at the right time means better honey that won\'t ferment in the jar. Honey that isn\'t fully capped has too much water content and can go bad. The nectar flow in NE Ohio typically ends in mid-July -- after that your bees stop bringing in much new nectar and it\'s time to harvest.',
       intermediate: 'Post-flow harvest timing maximizes yield and quality. Leaving supers on after flow ends invites robbing and makes fall mite treatment more complex.',
       advanced: 'Harvest timing affects both quality and fall management. Supers off by late July allows complete fall mite treatment window before winter bee rearing.'
     },
@@ -170,7 +170,7 @@ const beekeepingTasks = [
       advanced: 'Fall treatment window: August 15 - September 1 for Zone 6a. OA dribble or vaporization most effective when broodless or low brood. Apivar requires 6-8 week treatment window.'
     },
     how: {
-      beginner: 'The most beginner-friendly treatment is oxalic acid dribble. Mix the solution according to package directions. On a cool evening (bees are clustered) remove the inner cover and slowly dribble 5ml of solution per seam of bees directly onto the bees between frames. Replace cover. One treatment is usually enough in fall when brood is low. Always wear gloves and eye protection.',
+      beginner: 'The most beginner-friendly treatment is oxalic acid dribble. Mix the solution according to package directions. On a cool evening remove the inner cover and slowly dribble 5ml of solution per seam of bees directly onto the bees between frames. Replace cover. One treatment is usually enough in fall when brood is low. Always wear gloves and eye protection.',
       intermediate: 'Treatment choice depends on brood levels. OA vaporization most effective when brood is low (late Sept/Oct). Apivar strips should go in by August 15 to complete treatment before first cold. Follow label directions exactly.',
       advanced: 'Timing is everything. OA vapor is 95%+ effective when broodless -- consider inducing broodlessness or treating during natural broodless period. Apivar needs 42 days minimum -- calculate backwards from first hard frost.'
     },
@@ -195,12 +195,12 @@ const beekeepingTasks = [
       advanced: 'Stores audit: target 8-10 full frames of capped honey in Zone 6a. Heft test monthly through winter. Feed if below threshold before clustering.'
     },
     how: {
-      beginner: 'Lift the back of your hive slightly. It should feel very heavy -- like lifting a bag of concrete. If it feels light your bees don\'t have enough food. You can also do a quick peek: you want to see at least 6-8 frames that are mostly capped with honey. If stores look low you need to feed sugar syrup now before temperatures drop below 50F (bees can\'t process syrup when it\'s cold).',
+      beginner: 'Lift the back of your hive slightly. It should feel very heavy -- like lifting a bag of concrete. If it feels light your bees don\'t have enough food. You can also do a quick peek: you want to see at least 6-8 frames that are mostly capped with honey. If stores look low you need to feed sugar syrup now before temperatures drop below 50F.',
       intermediate: 'Heft test gives quick read -- target 80+ lbs total hive weight. Open and count honey frames. Feed 2:1 sugar syrup if below 6 full frames. Stop feeding when temps consistently below 50F.',
       advanced: 'Quantify stores precisely. 8-10 frames fully capped honey = adequate. Feed heavy syrup (2:1) immediately if short -- bees need time to dehydrate and cap before cold. Consider candy boards as insurance for marginal stores.'
     },
     why: {
-      beginner: 'Starvation is one of the most common ways colonies die in winter -- even when there\'s plenty of honey in the hive. Bees form a tight cluster and can\'t move far to reach stores. Making sure food is close to the cluster right now prevents starvation in January and February when you can\'t easily intervene.',
+      beginner: 'Starvation is one of the most common ways colonies die in winter -- even when there\'s plenty of honey in the hive. Bees form a tight cluster and can\'t move far to reach stores. Making sure food is close to the cluster right now prevents starvation in January and February.',
       intermediate: 'Adequate stores assessment in October prevents the heartbreak of finding a starved colony in February. Zone 6a winters are long -- 60-80 lbs is the real target, not the minimum.',
       advanced: 'Winter starvation is almost always preventable. The failure point is usually stores that were adequate in October but the cluster couldn\'t reach by February. Stores placement matters as much as quantity.'
     },
@@ -210,24 +210,24 @@ const beekeepingTasks = [
     id: 'bk9',
     season: 'Autumn',
     title: 'Reduce entrance and install mouse guard',
-    priority: 'soon',
-    badge: 'Before October',
+    priority: 'routine',
+    badge: 'Before first frost',
     time: '~15 min',
     requiresInspection: false,
     what: {
-      beginner: 'Make the hive entrance smaller and add a mouse guard to protect your colony over winter.',
-      intermediate: 'Reduce entrance to 4 inches or less. Install metal mouse guard before October 1.',
-      advanced: 'Entrance reduction and mouse guard installation. Consider upper entrance for winter moisture management.'
+      beginner: 'Make the hive entrance smaller and add a mouse guard to stop mice from moving in for the winter.',
+      intermediate: 'Install mouse guard and reduce entrance to winter configuration before first frost.',
+      advanced: 'Entrance reduction and mouse guard. Also assess ventilation setup for winter -- upper entrance or moisture quilt if using.'
     },
     how: {
-      beginner: 'Use your entrance reducer (usually comes with your hive) to close the entrance down to the smallest opening -- about the size of 2-3 bees side by side. Then attach a metal mouse guard over the entrance. This is just a metal strip with holes big enough for bees but too small for mice. Staple or tack it in place.',
-      intermediate: 'Install entrance reducer to smallest opening. Metal mouse guard essential -- mice will destroy comb and stress colony if they get in. Check that ventilation is adequate -- some upper entrance or moisture quilt recommended for Zone 6a.',
-      advanced: 'Entrance reduction reduces cold air intrusion and makes the entrance defendable. Mouse guard non-negotiable. Upper entrance (3/8 inch hole) improves winter ventilation and allows flight on warm winter days without removing the bottom reducer.'
+      beginner: 'Slide your entrance reducer to its smallest opening (usually the 3/4 inch slot). Attach a mouse guard -- this is a metal strip with holes just big enough for bees but too small for mice. Staple or push it firmly into the entrance. Mice can chew through wood to get in if they want to, so the guard needs to be metal.',
+      intermediate: 'Reduce entrance to minimum opening. Install metal mouse guard -- 4mm holes maximum. Check that it\'s flush against the landing board with no gaps at the sides.',
+      advanced: 'Entrance reduction and mouse exclusion. Consider upper entrance addition for moisture management. If using insulation wraps, install now before cold sets in.'
     },
     why: {
-      beginner: 'Mice love moving into beehives in fall -- it\'s warm, dry, and full of wax and honey. A mouse living in your hive over winter will destroy comb, stress your bees, and can kill the colony. The metal mouse guard is a simple cheap fix. Reducing the entrance also makes it easier for your smaller winter cluster to defend against robbers.',
-      intermediate: 'Entrance management in fall affects both defense and moisture control. Reducing entrance makes the cluster\'s defensive burden manageable. Mouse guard is essential -- a single mouse can destroy a hive in one winter.',
-      advanced: 'Integrated winter prep: entrance reduction for defense, mouse guard for pest exclusion, upper entrance for CO2 escape and moisture management. Zone 6a winters generate significant condensation -- moisture management matters as much as insulation.'
+      beginner: 'A smaller entrance is easier for your bees to defend from robbers in fall. And mice absolutely will move into a warm hive for winter if you don\'t stop them -- they destroy comb, eat stores, and leave a mess that often causes the colony to abscond in spring.',
+      intermediate: 'Fall robbing pressure is highest after the nectar flow ends. Reduced entrance plus mouse guard are basic winter prep -- takes 15 minutes, prevents significant losses.',
+      advanced: 'Entrance management affects both security and ventilation. Mouse exclusion is non-negotiable. Upper entrance for moisture escape is worth considering in NE Ohio\'s wet winters.'
     },
     beginnerNote: 'Don\'t forget this one -- it takes 15 minutes and a mouse guard costs about $3. Losing a colony to mice in February when you could have prevented it is genuinely heartbreaking.'
   },
@@ -304,7 +304,7 @@ const beekeepingTasks = [
       advanced: 'Full data record enables trend analysis. Track queen quality degradation, seasonal population curves, mite load trends, and productivity patterns year over year. This data drives all management decisions.'
     },
     why: {
-      beginner: 'Memory is unreliable especially when you\'re managing multiple hives or dealing with a problem. Written records let you track patterns, compare hives, and remember exactly what was happening when things started going wrong -- or right. Experienced beekeepers all say the same thing: they wish they\'d kept better records from the start.',
+      beginner: 'Memory is unreliable especially when you\'re managing multiple hives or dealing with a problem. Written records let you track patterns, compare hives, and remember exactly what was happening when things started going wrong -- or right.',
       intermediate: 'Inspection records transform reactive management into proactive management. Patterns in your data predict problems weeks before they become crises.',
       advanced: 'Data-driven beekeeping. Records enable year-over-year comparison, genetic selection decisions, and predictive management. Colony performance data is operationally valuable at any scale.'
     },
@@ -340,38 +340,79 @@ const hives = [
   }
 ];
 
-// ── GET CURRENT SEASON TASKS ──
+// ── INSPECTION LOG STORAGE ──
+// Keyed by hive id, array of inspection objects
+const hiveInspections = JSON.parse(localStorage.getItem('hiveInspections') || '{}');
+
+function saveInspections() {
+  localStorage.setItem('hiveInspections', JSON.stringify(hiveInspections));
+}
+
+function addInspection(hiveId, inspection) {
+  if (!hiveInspections[hiveId]) hiveInspections[hiveId] = [];
+  hiveInspections[hiveId].unshift(inspection);
+  saveInspections();
+}
+
+function getInspections(hiveId) {
+  return hiveInspections[hiveId] || [];
+}
+
+// ── GET SEASON TASKS ──
 function getSeasonTasks(season) {
   return beekeepingTasks.filter(t => t.season === season || t.season === 'All');
+}
+
+function getAllSeasonTasksGrouped() {
+  const seasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
+  return seasons.map(s => ({
+    season: s,
+    tasks: beekeepingTasks.filter(t => t.season === s)
+  }));
 }
 
 // ── RENDER BEEKEEPING MODULE ──
 function renderBeekeepingModule() {
   const season = window.appState?.weather?.season || 'Spring';
-  const seasonTasks = getSeasonTasks(season);
+  const showAllSeasons = window._bkShowAllSeasons || false;
 
   const screen = document.getElementById('screen-beekeeping');
   if (!screen) return;
 
+  const taskHTML = showAllSeasons
+    ? getAllSeasonTasksGrouped().map(group => `
+        <div class="section-label" style="margin-top:16px;">${group.season} · ${group.tasks.length} tasks</div>
+        ${group.tasks.map(task => renderTaskCard(task)).join('')}
+      `).join('')
+    : `
+        <div class="section-label" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>${season} tasks · ${getSeasonTasks(season).length} total</span>
+        </div>
+        ${getSeasonTasks(season).map(task => renderTaskCard(task)).join('')}
+      `;
+
   screen.innerHTML = `
     <div class="detail-header" style="margin-bottom:16px;">
       <button class="back-btn" onclick="navigate('modules')">← Modules</button>
-      <div class="detail-module">🐝 Beekeeping · ${season}</div>
+      <div class="detail-module">🐝 Beekeeping</div>
       <div class="detail-title">Your Hives</div>
     </div>
 
-    <!-- Hives -->
-    <div style="margin-bottom:20px;">
+    <!-- Hive cards -->
+    <div style="margin-bottom:8px;">
       ${hives.map(hive => `
-        <div class="card-lg" style="margin-bottom:10px;">
+        <div class="card-lg" style="margin-bottom:10px; cursor:pointer;" onclick="openHiveDetail('${hive.id}')">
           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
             <div>
               <div style="font-size:16px; font-weight:600; color:var(--text); margin-bottom:2px;">${hive.name}</div>
               <div style="font-size:12px; color:var(--text-light);">${hive.location} · Last inspected ${hive.lastInspection}</div>
             </div>
-            <span class="task-badge badge-${hive.health === 'strong' ? 'routine' : 'soon'}">${hive.healthLabel}</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="task-badge badge-${hive.health === 'strong' ? 'routine' : 'soon'}">${hive.healthLabel}</span>
+              <span style="color:var(--text-light); font-size:18px;">›</span>
+            </div>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0;">
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0 0;">
             <div style="background:var(--cream-dark); border-radius:8px; padding:8px; text-align:center;">
               <div style="font-size:18px; font-weight:600; color:var(--text);">${hive.frames.brood}</div>
               <div style="font-size:10px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.06em;">Brood</div>
@@ -385,28 +426,297 @@ function renderBeekeepingModule() {
               <div style="font-size:10px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.06em;">Pollen</div>
             </div>
           </div>
-          <div style="font-size:12px; color:var(--text-mid); line-height:1.5; padding-top:8px; border-top:1px solid var(--tan-light);">
-            <span style="font-weight:500; color:var(--green);">Queen:</span> ${hive.queenStatus} · ${hive.queenYear} queen
-          </div>
-          <div style="font-size:12px; color:var(--text-mid); margin-top:4px;">${hive.notes}</div>
         </div>
       `).join('')}
     </div>
 
-    <!-- Season Tasks -->
-    <div class="section-label">${season} tasks · ${seasonTasks.length} total</div>
-    ${seasonTasks.map(task => `
-      <div class="card task-card" onclick="openBeekeepingTask('${task.id}')">
-        <div class="task-icon" style="background:#E1F5EE;">🐝</div>
-        <div class="task-info">
-          <div class="task-title">${task.title}</div>
-          <div class="task-meta">Beekeeping · ${task.time}</div>
-          <span class="task-badge badge-${task.priority}">${task.badge}</span>
-        </div>
-        <div class="task-chevron">›</div>
-      </div>
-    `).join('')}
+    <!-- Season toggle -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <div class="section-label" style="margin:0;">${showAllSeasons ? 'All seasons' : season + ' tasks'}</div>
+      <button onclick="toggleBkSeasons()" style="background:${showAllSeasons ? 'var(--green)' : 'var(--cream-dark)'}; color:${showAllSeasons ? 'var(--white)' : 'var(--text-mid)'}; border:none; border-radius:20px; padding:4px 12px; font-size:11px; font-weight:500; cursor:pointer; font-family:inherit; transition:all 0.15s;">
+        ${showAllSeasons ? '✓ All seasons' : 'View all seasons'}
+      </button>
+    </div>
+
+    ${taskHTML}
   `;
+}
+
+function renderTaskCard(task) {
+  return `
+    <div class="card task-card" onclick="openBeekeepingTask('${task.id}')">
+      <div class="task-icon" style="background:#E1F5EE;">🐝</div>
+      <div class="task-info">
+        <div class="task-title">${task.title}</div>
+        <div class="task-meta">Beekeeping · ${task.time}</div>
+        <span class="task-badge badge-${task.priority}">${task.badge}</span>
+      </div>
+      <div class="task-chevron">›</div>
+    </div>
+  `;
+}
+
+function toggleBkSeasons() {
+  window._bkShowAllSeasons = !window._bkShowAllSeasons;
+  renderBeekeepingModule();
+}
+
+// ── HIVE DETAIL SCREEN ──
+function openHiveDetail(hiveId) {
+  const hive = hives.find(h => h.id === hiveId);
+  if (!hive) return;
+
+  window._currentHiveId = hiveId;
+  const inspections = getInspections(hiveId);
+  const screen = document.getElementById('screen-hive-detail');
+
+  const healthColor = hive.health === 'strong' ? 'routine' : hive.health === 'moderate' ? 'soon' : 'urgent';
+
+  screen.innerHTML = `
+    <div class="detail-header" style="margin-bottom:16px;">
+      <button class="back-btn" onclick="navigate('beekeeping')">← Beekeeping</button>
+      <div class="detail-module">🐝 Beekeeping · ${hive.location}</div>
+      <div class="detail-title">${hive.name}</div>
+    </div>
+
+    <!-- Status card -->
+    <div class="card-lg" style="margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <div style="font-size:13px; font-weight:500; color:var(--text);">Current status</div>
+        <span class="task-badge badge-${healthColor}">${hive.healthLabel}</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px;">
+        <div style="background:var(--cream-dark); border-radius:8px; padding:10px; text-align:center;">
+          <div style="font-size:20px; font-weight:600; color:var(--text);">${hive.frames.brood}</div>
+          <div style="font-size:10px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">Brood</div>
+        </div>
+        <div style="background:var(--cream-dark); border-radius:8px; padding:10px; text-align:center;">
+          <div style="font-size:20px; font-weight:600; color:var(--text);">${hive.frames.honey}</div>
+          <div style="font-size:10px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">Honey</div>
+        </div>
+        <div style="background:var(--cream-dark); border-radius:8px; padding:10px; text-align:center;">
+          <div style="font-size:20px; font-weight:600; color:var(--text);">${hive.frames.pollen}</div>
+          <div style="font-size:10px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">Pollen</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--tan-light); padding-top:12px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; justify-content:space-between;">
+          <span style="font-size:12px; color:var(--text-light);">Queen</span>
+          <span style="font-size:12px; color:var(--text); font-weight:500;">${hive.queenStatus} · ${hive.queenYear} queen</span>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <span style="font-size:12px; color:var(--text-light);">Last inspection</span>
+          <span style="font-size:12px; color:var(--text); font-weight:500;">${hive.lastInspection}</span>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <span style="font-size:12px; color:var(--text-light);">Location</span>
+          <span style="font-size:12px; color:var(--text); font-weight:500;">${hive.location}</span>
+        </div>
+      </div>
+      ${hive.notes ? `<div style="margin-top:10px; padding:10px; background:var(--cream-dark); border-radius:8px; font-size:12px; color:var(--text-mid); line-height:1.5;">${hive.notes}</div>` : ''}
+    </div>
+
+    <!-- Log inspection button -->
+    <button onclick="showInspectionForm('${hiveId}')" style="width:100%; background:var(--green); color:var(--white); border:none; border-radius:var(--radius); padding:14px; font-size:15px; font-weight:500; cursor:pointer; font-family:inherit; display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:16px;">
+      📋 Log an inspection
+    </button>
+
+    <!-- Inspection history -->
+    <div class="section-label">Inspection history · ${inspections.length} ${inspections.length === 1 ? 'entry' : 'entries'}</div>
+    ${inspections.length === 0
+      ? `<div class="card" style="text-align:center; padding:24px; border-style:dashed; opacity:0.6;">
+          <div style="font-size:24px; margin-bottom:8px;">📋</div>
+          <div style="font-size:13px; color:var(--text-mid);">No inspections logged yet</div>
+        </div>`
+      : inspections.map(insp => renderInspectionEntry(insp)).join('')
+    }
+  `;
+
+  // Show hive detail screen
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  screen.classList.add('active');
+  document.getElementById('nav-title').textContent = hive.name;
+}
+
+function renderInspectionEntry(insp) {
+  const queenIcon = insp.queenSeen === 'yes' ? '👑' : insp.queenSeen === 'eggs' ? '🥚' : '❓';
+  return `
+    <div class="card" style="margin-bottom:8px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+        <div>
+          <div style="font-size:14px; font-weight:500; color:var(--text);">${insp.date}</div>
+          <div style="font-size:11px; color:var(--text-light); margin-top:1px;">${insp.temp ? insp.temp + '°F · ' : ''}${insp.weather || ''}</div>
+        </div>
+        <span class="task-badge badge-${insp.overallHealth === 'strong' ? 'routine' : insp.overallHealth === 'concern' ? 'urgent' : 'soon'}">${insp.overallHealth === 'strong' ? 'Strong' : insp.overallHealth === 'concern' ? 'Concern' : 'Watch'}</span>
+      </div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:8px;">
+        <div style="font-size:12px; color:var(--text-mid);">${queenIcon} ${insp.queenSeen === 'yes' ? 'Queen seen' : insp.queenSeen === 'eggs' ? 'Eggs seen' : 'Queen not found'}</div>
+        ${insp.broodPattern ? `<div style="font-size:12px; color:var(--text-mid);">🍯 Brood: ${insp.broodPattern}</div>` : ''}
+        ${insp.miteCount !== '' && insp.miteCount !== undefined ? `<div style="font-size:12px; color:var(--text-mid);">🔬 Mites: ${insp.miteCount}%</div>` : ''}
+      </div>
+      ${insp.notes ? `<div style="font-size:12px; color:var(--text-mid); line-height:1.5; padding-top:8px; border-top:1px solid var(--tan-light);">${insp.notes}</div>` : ''}
+    </div>
+  `;
+}
+
+// ── INSPECTION FORM ──
+function showInspectionForm(hiveId) {
+  const hive = hives.find(h => h.id === hiveId);
+  const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const currentTemp = window.appState?.weather?.temp || '';
+
+  const screen = document.getElementById('screen-hive-detail');
+  screen.innerHTML = `
+    <div class="detail-header" style="margin-bottom:16px;">
+      <button class="back-btn" onclick="openHiveDetail('${hiveId}')">← ${hive.name}</button>
+      <div class="detail-module">🐝 Beekeeping · Inspection</div>
+      <div class="detail-title">Log Inspection</div>
+    </div>
+
+    <div class="card-lg" style="margin-bottom:12px;">
+      <!-- Date & Temp -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Date</div>
+        <div style="background:var(--cream-dark); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--text);">${today}</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+        <div>
+          <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Temp (°F)</div>
+          <input id="insp-temp" type="number" value="${currentTemp}" placeholder="e.g. 68"
+            style="width:100%; background:var(--cream-dark); border:1px solid var(--tan-light); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--text); font-family:inherit; outline:none;">
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Weather</div>
+          <input id="insp-weather" type="text" placeholder="e.g. sunny, calm"
+            style="width:100%; background:var(--cream-dark); border:1px solid var(--tan-light); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--text); font-family:inherit; outline:none;">
+        </div>
+      </div>
+
+      <!-- Queen status -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Queen status</div>
+        <div style="display:flex; gap:8px;">
+          ${['yes', 'eggs', 'neither'].map(v => `
+            <button onclick="selectOption('insp-queen', '${v}', this)"
+              data-group="insp-queen" data-value="${v}"
+              style="flex:1; padding:8px 4px; font-size:12px; font-weight:500; border-radius:8px; cursor:pointer; font-family:inherit; transition:all 0.15s; border:1px solid var(--tan-light); background:var(--cream-dark); color:var(--text-mid);">
+              ${v === 'yes' ? '👑 Queen seen' : v === 'eggs' ? '🥚 Eggs seen' : '❓ Not found'}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Brood pattern -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Brood pattern</div>
+        <div style="display:flex; gap:8px;">
+          ${['solid', 'patchy', 'poor'].map(v => `
+            <button onclick="selectOption('insp-brood', '${v}', this)"
+              data-group="insp-brood" data-value="${v}"
+              style="flex:1; padding:8px 4px; font-size:12px; font-weight:500; border-radius:8px; cursor:pointer; font-family:inherit; transition:all 0.15s; border:1px solid var(--tan-light); background:var(--cream-dark); color:var(--text-mid);">
+              ${v.charAt(0).toUpperCase() + v.slice(1)}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Mite count -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Mite count % <span style="font-weight:400; text-transform:none; letter-spacing:0;">(leave blank if not tested)</span></div>
+        <input id="insp-mites" type="number" step="0.1" min="0" max="100" placeholder="e.g. 1.5"
+          style="width:100%; background:var(--cream-dark); border:1px solid var(--tan-light); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--text); font-family:inherit; outline:none;">
+      </div>
+
+      <!-- Overall health -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Overall assessment</div>
+        <div style="display:flex; gap:8px;">
+          ${[['strong','routine','Strong'],['watch','soon','Watch'],['concern','urgent','Concern']].map(([v,badge,label]) => `
+            <button onclick="selectOption('insp-health', '${v}', this)"
+              data-group="insp-health" data-value="${v}"
+              style="flex:1; padding:8px 4px; font-size:12px; font-weight:500; border-radius:8px; cursor:pointer; font-family:inherit; transition:all 0.15s; border:1px solid var(--tan-light); background:var(--cream-dark); color:var(--text-mid);">
+              ${label}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div style="margin-bottom:4px;">
+        <div style="font-size:11px; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Notes</div>
+        <textarea id="insp-notes" placeholder="What did you see? Anything unusual? Actions taken?"
+          style="width:100%; background:var(--cream-dark); border:1px solid var(--tan-light); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--text); font-family:inherit; outline:none; min-height:90px; resize:none; line-height:1.5;"></textarea>
+      </div>
+    </div>
+
+    <button onclick="saveInspectionForm('${hiveId}')"
+      style="width:100%; background:var(--green); color:var(--white); border:none; border-radius:var(--radius); padding:14px; font-size:15px; font-weight:500; cursor:pointer; font-family:inherit; margin-bottom:12px;">
+      ✓ Save inspection
+    </button>
+    <button onclick="openHiveDetail('${hiveId}')"
+      style="width:100%; background:transparent; color:var(--text-mid); border:1px solid var(--tan-light); border-radius:var(--radius); padding:12px; font-size:14px; cursor:pointer; font-family:inherit;">
+      Cancel
+    </button>
+  `;
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  screen.classList.add('active');
+  document.getElementById('nav-title').textContent = 'Log Inspection';
+}
+
+function selectOption(group, value, btn) {
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(b => {
+    b.style.background = 'var(--cream-dark)';
+    b.style.color = 'var(--text-mid)';
+    b.style.borderColor = 'var(--tan-light)';
+  });
+  btn.style.background = 'var(--green)';
+  btn.style.color = 'var(--white)';
+  btn.style.borderColor = 'var(--green)';
+  btn.dataset.selected = 'true';
+}
+
+function getSelectedOption(group) {
+  const btn = document.querySelector(`[data-group="${group}"][data-selected="true"]`);
+  return btn ? btn.dataset.value : null;
+}
+
+function saveInspectionForm(hiveId) {
+  const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const inspection = {
+    date: today,
+    temp: document.getElementById('insp-temp')?.value || '',
+    weather: document.getElementById('insp-weather')?.value || '',
+    queenSeen: getSelectedOption('insp-queen') || 'neither',
+    broodPattern: getSelectedOption('insp-brood') || '',
+    miteCount: document.getElementById('insp-mites')?.value || '',
+    overallHealth: getSelectedOption('insp-health') || 'watch',
+    notes: document.getElementById('insp-notes')?.value || ''
+  };
+
+  addInspection(hiveId, inspection);
+
+  // Update hive last inspection date
+  const hive = hives.find(h => h.id === hiveId);
+  if (hive) {
+    hive.lastInspection = today;
+    if (inspection.overallHealth === 'strong') { hive.health = 'strong'; hive.healthLabel = 'Strong'; }
+    else if (inspection.overallHealth === 'concern') { hive.health = 'critical'; hive.healthLabel = 'Concern'; }
+    else { hive.health = 'moderate'; hive.healthLabel = 'Watch'; }
+  }
+
+  // Also add to main log
+  if (window._addToMainLog) {
+    window._addToMainLog({
+      date: today,
+      title: `${hive?.name || 'Hive'} inspection logged`,
+      detail: `Queen: ${inspection.queenSeen === 'yes' ? 'Seen' : inspection.queenSeen === 'eggs' ? 'Eggs seen' : 'Not found'} · Brood: ${inspection.broodPattern || 'not recorded'} · ${inspection.notes ? inspection.notes.slice(0, 60) + (inspection.notes.length > 60 ? '...' : '') : 'No notes'}`,
+      tag: 'Beekeeping'
+    });
+  }
+
+  openHiveDetail(hiveId);
 }
 
 // ── OPEN BEEKEEPING TASK ──
