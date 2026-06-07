@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ── BEEKEEPING MODULE INTEGRATION ──
 window.appState = window.appState || {};
 
-// Override navigate to handle beekeeping screens
+// Override navigate to handle beekeeping and chickens screens
 const _originalNavigate = navigate;
 window.navigate = function(screen) {
   if (screen === 'beekeeping') {
@@ -398,6 +398,17 @@ window.navigate = function(screen) {
       renderBeekeepingModule();
     }
     document.getElementById('nav-title').textContent = 'Beekeeping';
+    return;
+  }
+  if (screen === 'chickens') {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const ckScreen = document.getElementById('screen-chickens');
+    if (ckScreen) {
+      ckScreen.classList.add('active');
+      renderChickensModule();
+    }
+    document.getElementById('nav-title').textContent = 'Chickens';
     return;
   }
   _originalNavigate(screen);
