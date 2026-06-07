@@ -99,6 +99,161 @@ const chickenTasks = [
     beginnerNote: 'Collect eggs at least once a day -- twice if you can. Eggs left in boxes get dirty, sometimes broken, and occasionally eaten. Once a hen learns to eat eggs it\'s a very hard habit to break.'
   },
 
+  // SPRING -- BROODING
+  {
+    id: 'ck_brood1',
+    season: 'Spring',
+    title: 'Set up brooder for new chicks',
+    priority: 'urgent',
+    badge: 'Before chicks arrive',
+    time: '~1 hour',
+    what: {
+      beginner: 'Set up a warm, safe brooder box before your chicks arrive -- they need heat, food, water, and protection from day one.',
+      intermediate: 'Brooder setup: heat source, thermometer, chick waterer, chick starter feed, appropriate bedding, draft-free enclosure.',
+      advanced: 'Brooder setup with redundant heat source, calibrated thermometer, nipple waterers preferred, medicated or unmedicated chick starter based on vaccination status, pine shavings or paper towel over shavings for first 3 days.'
+    },
+    how: {
+      beginner: 'You\'ll need: a box or tub (a large plastic storage tote works great), a heat lamp with a red bulb, a thermometer, a chick waterer, and chick starter crumble feed. Set the heat lamp so the temperature directly under it is 95°F for the first week. Put 2-3 inches of pine shavings on the bottom. Fill the waterer with room-temperature water and add a pinch of sugar to give chicks an energy boost on day one. Set it all up 24 hours before chicks arrive so you can get the temperature stable. Chicks that are too cold huddle under the lamp and peep loudly. Chicks that are too warm spread away from the lamp and pant. Comfortable chicks spread out and explore.',
+      intermediate: 'Brooder temp: 95°F at chick level week 1, reduce 5°F per week until 70°F or fully feathered (~6 weeks). Use a thermometer, not guesswork. Heat plate brooders are safer than heat lamps and more energy efficient -- worth the investment. Pine shavings 2-3 inches deep. Paper towel over shavings for first 2-3 days helps chicks find feed without eating bedding. Change waterer daily minimum. Chick starter (18-20% protein) available at all times.',
+      advanced: 'Pre-warm brooder 24 hours before arrival. Heat plate preferred over lamp -- lower fire risk, more natural behavior. Dual thermometers for redundancy. Nipple waterers reduce contamination vs open waterers. Medicated starter (amprolium) if chicks not vaccinated for coccidiosis; unmedicated if Marek\'s vaccinated chicks from hatchery. Paper towel substrate for days 1-3 prevents pasty butt and teaches feed recognition. Monitor for pasty butt daily first week -- can be fatal if untreated.'
+    },
+    why: {
+      beginner: 'Day-old chicks can\'t regulate their own body temperature -- they depend entirely on external heat to survive. Too cold and they die within hours. Too hot and they dehydrate and die. Getting the brooder set up and stable before they arrive is the single most important thing you can do. Every year people lose chicks because the setup wasn\'t ready.',
+      intermediate: 'Chick mortality in the first week is almost entirely preventable and almost entirely due to chilling, overheating, or dehydration. A properly set up brooder eliminates the three most common causes of early chick loss. Temperature management in week 1 is the most hands-on part of raising chicks.',
+      advanced: 'Brooder environment quality in the first 2 weeks has lasting effects on immune development and growth rate. Chronic mild cold stress in the brooder suppresses immune function and increases coccidiosis susceptibility. Heat plate brooders produce calmer, better-developed birds than heat lamps due to more natural thermal gradient and reduced light stress.'
+    },
+    beginnerNote: 'The temperature guide (95°F week 1, drop 5° each week) is a starting point but watch the chicks, not just the thermometer. Chicks will tell you exactly what they need by where they hang out in the brooder.'
+  },
+  {
+    id: 'ck_brood2',
+    season: 'Spring',
+    title: 'Transition chicks to the coop',
+    priority: 'soon',
+    badge: 'Weeks 6-8',
+    time: '~1-2 hours',
+    what: {
+      beginner: 'Move your chicks from the brooder to the outdoor coop once they\'re fully feathered -- usually around 6-8 weeks old.',
+      intermediate: 'Brooder-to-coop transition at 6-8 weeks: hardening off period, temperature check, integration plan if existing flock.',
+      advanced: 'Transition protocol: full feathering confirmation, outdoor temps vs brooder temp gap assessment, 1-2 week hardening off, biosecurity if joining established flock.'
+    },
+    how: {
+      beginner: 'Wait until your chicks are fully covered in feathers (not just fluffy down -- real feathers). This usually happens around 6-8 weeks. Before moving them, make sure nighttime temps are consistently above 50°F, or have a heat source in the coop for the first week. Start by letting them outside in a safe pen during warm days for a week before moving them full time -- this is called hardening off. If you have an existing flock, keep the chicks in a separate space where the older birds can see but not touch them for at least 2 weeks before mixing.',
+      intermediate: 'Full feathering is the indicator, not age -- feathering varies by breed. Heavy breeds like Buff Orpingtons feather slower than light breeds. Hardening off: supervised outdoor time in warm weather for 7-10 days before full transition. Coop temp at night must be within 10-15°F of brooder temp at transition. If integrating with existing flock: minimum 2-week visual introduction, then physical introduction at night. Chicks should be at least 2/3 the size of adult birds before full integration.'
+      ,
+      advanced: 'Transition stress is a disease trigger -- monitor for respiratory symptoms and coccidiosis in the 2 weeks post-move. Hardening off is not optional for immune conditioning. If chicks were raised on medicated starter and are transitioning to a flock on layer feed, switch to unmedicated grower (18% protein) at transition and hold on layer feed until 18-20 weeks. Integration with established flocks always carries social stress -- extra feed and water stations reduce competition injuries. Night introduction onto roost remains the most reliable integration method.'
+    },
+    why: {
+      beginner: 'Chicks that move to the coop before they\'re ready -- before they\'re fully feathered or when it\'s too cold -- can get sick or die. The transition is one of the higher-risk moments in raising chicks. Taking it slowly and watching the weather makes the difference between a smooth move and a stressful one.',
+      intermediate: 'The brooder-to-coop transition is a significant immune stress event. Temperature shock, new pathogens in the outdoor environment, and social stress from integration all hit at once. Hardening off conditions the immune system and allows gradual microbial exposure. Rushing the transition is a common cause of post-transition illness.',
+      advanced: 'Transition represents the highest disease risk window outside of hatch. Coccidiosis challenge increases dramatically with outdoor soil exposure -- immune competence at this stage determines outcome. Integration stress can trigger latent infections. The 2-week visual introduction protocol before physical contact allows hierarchy establishment that dramatically reduces injury during integration.'
+    },
+    beginnerNote: 'Moving chicks at night is the secret move. Pick them up after dark, put them on the roost in the coop, and they wake up in the morning like they\'ve always been there. Much less stressful for everyone -- including you.'
+  },
+
+  // SPRING -- FEED
+  {
+    id: 'ck_feed1',
+    season: 'Spring',
+    title: 'Spring feed review -- switch to layer feed',
+    priority: 'routine',
+    badge: 'Seasonal transition',
+    time: '~10 min',
+    what: {
+      beginner: 'Make sure your laying hens are on the right feed for spring -- layer pellets with oyster shell on the side.',
+      intermediate: 'Spring feed transition: confirm layer feed (16% protein), oyster shell available free-choice, scratch as treat only.',
+      advanced: 'Spring feed audit: layer feed 16% protein, free-choice oyster shell, assess body condition after winter, consider flock raiser + calcium supplement if mixed-age flock.'
+    },
+    how: {
+      beginner: 'Your laying hens need layer feed (16% protein) -- it has the calcium they need to make strong eggshells. Keep a small dish of oyster shell available at all times so hens can take what they need. Scratch grain (the mixed corn and grain blend) is a treat, not a meal -- think of it like candy. A small handful per day is fine but more than that fills them up with low-nutrition food and you\'ll get fewer eggs. Make sure they have feed available at all times.',
+      intermediate: 'Layer feed (16% protein) is the correct base for laying hens. Free-choice oyster shell is more effective than calcium baked into the feed -- hens self-regulate intake based on need. Scratch: max 10% of diet. If you have a mixed flock (layers plus non-layers or young birds), consider flock raiser (18% protein) for everyone with oyster shell on the side -- layers take what they need, non-layers aren\'t over-calcified.',
+      advanced: 'Spring body condition assessment after winter: hens that lost weight over winter may benefit from 2-3 weeks on 18% flock raiser before switching to layer. Excess weight (common in confined winter birds) warrants increased foraging opportunity. Free-choice calcium always preferred over calcium in feed for precision. Grit essential for birds on pasture -- insoluble granite grit for digestion, separate from oyster shell. Monitor shell quality as early production indicator -- thin or soft shells indicate calcium deficiency or absorption issue.'
+    },
+    why: {
+      beginner: 'Feed is the foundation of egg production. A hen needs about 4 grams of calcium to make one eggshell -- that\'s a significant daily requirement. Without the right feed and calcium source, she\'ll pull calcium from her own bones to make eggs, which weakens her over time. Getting the feed right in spring sets up your whole laying season.',
+      intermediate: 'Calcium metabolism in laying hens is highly regulated -- hens on free-choice oyster shell self-regulate intake much better than hens on feed with fixed calcium levels. This matters because calcium over-supplementation causes kidney damage over time. The feed foundation in spring determines production quality for the season.',
+      advanced: 'Dietary calcium and protein interact directly with egg production and shell quality. Post-winter nutritional recovery affects the first laying cycle quality. Free-choice calcium supplementation is superior to feed-incorporated calcium because it allows individual regulation -- particularly important in mixed-age or mixed-breed flocks with different production rates.'
+    },
+    beginnerNote: 'If you\'re seeing soft or shell-less eggs, the first thing to check is your calcium supply. Put out a dish of oyster shell and give it a week -- most calcium deficiency issues resolve on their own once the supply is there.'
+  },
+
+  // SUMMER -- FEED
+  {
+    id: 'ck_feed2',
+    season: 'Summer',
+    title: 'Summer feed adjustments -- heat and production',
+    priority: 'routine',
+    badge: 'Hot weather',
+    time: '~10 min',
+    what: {
+      beginner: 'Adjust feeding timing and add cold treats on hot days to keep your flock eating well and laying through summer heat.',
+      intermediate: 'Summer feed management: early/late feeding, electrolyte supplementation on hot days, reduce scratch, cold treats.',
+      advanced: 'Summer nutritional management: feed timing around heat peaks, electrolyte protocol above 90°F, possible protein reduction in extreme heat, cold/wet feed options.'
+    },
+    how: {
+      beginner: 'In hot weather chickens eat less during the heat of the day -- move feeding to early morning and evening when it\'s cooler. They\'ll eat more and stay healthier. Cold treats are genuinely helpful and chickens love them: frozen watermelon chunks, frozen berries, a block of ice with corn frozen inside. Cut back on scratch grain in summer -- it generates body heat during digestion and makes hot birds hotter. Make sure fresh water is available at all times and change it more frequently.',
+      intermediate: 'Heat reduces feed intake which reduces production. Counter by feeding in cool hours (before 8am and after 6pm). Reduce scratch to zero or near-zero in heat over 85°F -- scratch has a high heat increment (generates body heat during digestion). Add electrolytes to water on days over 90°F. Cold wet mash in the morning is often eagerly accepted when dry feed isn\'t. Watch for production drops as heat stress indicator.',
+      advanced: 'Heat stress causes specific nutritional effects: reduced feed intake decreases protein and calcium intake at the same time laying demand continues. In extreme heat (90°F+), consider reducing dietary protein slightly (14% vs 16%) -- protein metabolism has high heat increment. Increase vitamin C supplementation during heat stress -- it\'s shown to reduce cortisol response. Electrolytes (sodium, potassium, chloride) are critical -- commercial poultry electrolytes or a carefully measured homemade solution. Wet mash feeding improves intake in heat because it reduces the energy cost of eating and provides additional hydration.'
+    },
+    why: {
+      beginner: 'Chickens that don\'t eat enough stop laying eggs. In summer heat, they naturally reduce feed intake to avoid generating more body heat through digestion. Feeding at cooler times of day and making food more appealing gets them eating enough to keep producing without making their heat problem worse.',
+      intermediate: 'Summer production losses are primarily nutritional -- heat-stressed hens eat less, which directly reduces protein and calcium intake. The scratch reduction in summer is counterintuitive to new keepers but important: grain digestion generates significant body heat (the heat increment of feeding), making hot birds hotter.',
+      advanced: 'Thermal physiology of heat stress directly impacts nutrient partitioning. Reduced feed intake during heat stress creates a simultaneous protein and calcium deficit at a time when laying demand remains constant. The result is thin shells, reduced production, and potential muscle catabolism. Targeted nutritional support during heat events measurably reduces production losses.'
+    },
+    beginnerNote: 'Frozen watermelon is probably the best summer treat you can give chickens. It\'s mostly water (hydration), they go absolutely crazy for it, and it cools them down. Buy a cheap one and freeze chunks in an ice cube tray.'
+  },
+
+  // AUTUMN -- FEED
+  {
+    id: 'ck_feed3',
+    season: 'Autumn',
+    title: 'Autumn feed transition -- support molt and winter prep',
+    priority: 'soon',
+    badge: 'Molt season',
+    time: '~10 min',
+    what: {
+      beginner: 'Switch your flock to higher-protein feed during the fall molt to help them grow new feathers faster.',
+      intermediate: 'Autumn feed transition: switch to flock raiser (20% protein) during molt, reduce oyster shell, reintroduce scratch as weather cools.',
+      advanced: 'Molt nutritional protocol: 20%+ protein feed, suspend oyster shell for non-layers, reintroduce scratch at 10% of diet for cold weather, assess and adjust body condition before winter.'
+    },
+    how: {
+      beginner: 'When you start seeing feathers everywhere and your hens looking patchy, switch from layer feed to a higher-protein feed called "flock raiser" or "developer" (20% protein). This gives them the building blocks to grow new feathers faster. While they\'re molting and not laying, take the oyster shell away -- they don\'t need the extra calcium if they\'re not making eggs. You can start offering scratch grain as a small evening treat as temperatures drop -- it generates a little body heat overnight. Switch back to layer feed when they start laying again.',
+      intermediate: 'At first sign of molt, transition to 20% protein flock raiser over 5-7 days (mix increasing proportions to avoid feed refusal). Remove free-choice oyster shell during heavy molt -- non-laying hens don\'t need it and excess calcium stresses kidneys. Reintroduce scratch at 5-10% of diet as temps drop below 50°F -- the heat increment of scratch digestion provides mild overnight warmth. Return to layer feed + oyster shell when production resumes.',
+      advanced: 'Feather composition is ~85% protein -- inadequate dietary protein during molt directly extends molt duration and compromises feather quality. The amino acid profile matters: methionine is the first limiting amino acid in feather growth. Some premium flock raisers are formulated with this in mind. Calcium removal during molt prevents renal calcification in non-laying birds. Scratch reintroduction timing should track with temperature -- the heat increment benefit is real but overfat hens going into winter have reduced cold tolerance. Body condition score before winter determines supplemental feeding needs.'
+    },
+    why: {
+      beginner: 'Feathers are made mostly of protein. If your hens are trying to grow a whole new set of feathers on low-protein layer feed, it takes much longer and the feathers don\'t come in as well. Better feathers going into winter means better insulation and a faster return to laying in spring.',
+      intermediate: 'The protein requirement for molt is significantly higher than for maintenance or even laying. Layer feed at 16% protein is inadequate for rapid feather regrowth. The molt-to-laying transition speed and subsequent laying cycle quality are directly tied to nutritional support during molt.',
+      advanced: 'Molt represents a complete feather follicle regeneration cycle. Nutritional adequacy during this window determines both the speed of return to lay and the quality of the subsequent laying cycle. Methionine limitation is common in standard feeds during molt -- it\'s the rate-limiting amino acid for keratin synthesis. Investing in proper molt nutrition pays off in a stronger spring laying season.'
+    },
+    beginnerNote: 'Your hens are going to look rough during molt -- patchy, naked in spots, sometimes grumpy. It\'s completely normal and temporary. Feed them well, handle them as little as possible (pin feathers hurt), and they\'ll come out the other side looking better than ever.'
+  },
+
+  // WINTER -- FEED
+  {
+    id: 'ck_feed4',
+    season: 'Winter',
+    title: 'Winter feed management -- keeping hens warm and laying',
+    priority: 'routine',
+    badge: 'Cold weather',
+    time: '~10 min',
+    what: {
+      beginner: 'Adjust feeding in winter to help your hens stay warm and keep laying through the cold months.',
+      intermediate: 'Winter feed protocol: layer feed base, scratch as evening supplement, vitamin D consideration, consistent feeding schedule.',
+      advanced: 'Winter nutritional management: layer feed, scratch timing for heat increment benefit, vitamin D supplementation, body condition monitoring, lighting protocol for production.'
+    },
+    how: {
+      beginner: 'Keep your hens on layer feed as their main food all winter. Add a small handful of scratch grain per bird in the late afternoon -- chickens digest grain overnight and it generates a small amount of body heat, which helps on cold nights. Make sure they always have oyster shell available. In very cold weather, a warm wet mash of layer feed mixed with warm water in the morning is a great treat that also helps with hydration when water can freeze. Keep a consistent feeding schedule -- chickens are creatures of habit and disrupted routines stress them.',
+      intermediate: 'Layer feed remains the base. Evening scratch at 5-10% of diet timing is intentional -- grain digestion generates heat overnight when they need it. Vitamin D supplementation is worth considering in NE Ohio winters: hens get minimal UV exposure from November-February which affects calcium metabolism. If supplementing light for production, ensure 14-16 hours total light per day on a consistent timer -- disrupted light cycles reduce production more than no supplemental light. Warm mash 2-3x per week improves hydration and is eagerly accepted.',
+      advanced: 'Winter production is a photoperiod management question as much as a nutrition question. Without supplemental light, expect 20-40% of peak production in mid-winter. Nutritionally, layer feed + evening scratch + free-choice calcium is adequate for NE Ohio winters. Vitamin D3 supplementation (or UV lamp exposure) is worth considering for flocks with no direct sun access November-February -- D3 deficiency impairs calcium absorption and shell quality. Body condition monitoring monthly: overweight hens (from reduced activity and constant feed access) have reduced laying efficiency and cold tolerance paradoxically.'
+    },
+    why: {
+      beginner: 'Chickens burn more calories in cold weather just staying warm -- think of it like leaving the heat running all day. Making sure they eat enough good food gives them the energy to stay warm AND keep laying. The evening scratch trick is a simple way to give them a little extra warmth overnight without overfeeding.',
+      intermediate: 'The heat increment of feeding is a real and useful tool in cold weather management. Scratch grain has a higher heat increment than layer feed -- timed in the evening, the digestive heat generation overlaps with the coldest overnight hours. Vitamin D deficiency is underrecognized in winter-kept flocks and directly affects both shell quality and laying consistency.',
+      advanced: 'Cold weather increases maintenance energy requirements by 20-30% in laying hens, reducing the energy available for production. This, combined with reduced photoperiod, is why winter production drops even in well-managed flocks. Nutritional support can partially offset energy partitioning to maintenance but cannot fully compensate for photoperiod effects without supplemental lighting. The interaction between nutrition, light, and temperature in winter production is complex -- consistent management of all three is more effective than optimizing any single variable.'
+    },
+    beginnerNote: 'Warm mash on a cold morning makes you feel like a good chicken parent and your hens will come running when they see the bowl. Mix layer feed with just enough warm water to make a thick porridge consistency -- not soupy. It\'s a five-minute thing that they absolutely love.'
+  },
+
   // SUMMER
   {
     id: 'ck5',
