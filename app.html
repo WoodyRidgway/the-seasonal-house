@@ -251,12 +251,12 @@
   </div>
 
   <!-- ══ ADVISOR ══ -->
-  <div class="screen" id="screen-advisor">
+  <div class="screen" id="screen-advisor" style="display:none; flex-direction:column; padding:0; overflow:hidden;">
     <div class="advisor-header">
       <div class="advisor-title">The Advisor</div>
       <div class="advisor-sub" id="advisor-sub">Seasonal guidance · Spring · NE Ohio</div>
     </div>
-    <div style="padding-top:16px;">
+    <div style="flex:1; overflow-y:auto; padding:16px; padding-bottom:8px;">
       <div class="section-label">Ask anything</div>
       <div class="suggested-questions">
         <button class="suggested-q" onclick="askSuggested('My hive seems less active than last week -- what should I check?')">Hive less active?</button>
@@ -267,10 +267,10 @@
       <div class="chat-messages" id="chat-messages">
         <div class="message assistant" data-default="true">Hey -- I'm your Seasonal House Advisor. I know it's Spring in NE Ohio and you're running Beekeeping, Chickens, and Garden modules. What's on your mind?</div>
       </div>
-      <div class="chat-input-wrap">
-        <input type="text" class="chat-input" id="chat-input" placeholder="Ask about your hives, flock, or garden...">
-        <button class="chat-send" id="chat-send" onclick="sendMessage()">↑</button>
-      </div>
+    </div>
+    <div style="padding:10px 16px 16px; background:var(--cream); border-top:1px solid var(--tan-light); display:flex; gap:8px; flex-shrink:0;">
+      <input type="text" class="chat-input" id="chat-input" placeholder="Ask about your hives, flock, or garden...">
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">↑</button>
     </div>
   </div>
 
